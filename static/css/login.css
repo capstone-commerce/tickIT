@@ -1,0 +1,17 @@
+html, body{
+	max-width: 100%;
+	overflow-x: hidden;
+}
+body{
+	transform: translate(-50%, -50%);
+	position: absolute;
+	text-align: center;
+	top: 25%;
+	left: 50%;
+}
+#login_input input{
+	color: grey;
+}
+#login_banner h1{
+	font-size: 72px;
+}

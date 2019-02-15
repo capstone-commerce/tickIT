@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create Ticket | tickIT</title>
+	<link rel="stylesheet" type="text/css" href="./static/css/create.css">
+	<script>
+		window.onload = function(){
+			document.getElementById("logout_button").onclick = function () {window.location.href='./login.html'};
+			document.getElementById("submit_ticket_button").onclick = function () {window.location.href='./home.html'};
+		}
+	</script>
+</head>
+<body>
+	<div id="create_ticket_menu">
+		<h1>Create Ticket</h1>
+		<div id="create_table">
+			<table>
+				<tr>
+					<td><input type="input" name="" value=""> info</td>
+					<td><input type="input" name="" value=""> info</td>
+					<td><input type="range" min="1" max="5" value="3" class="slider" id="priority_range">Priority</td>
+				</tr>
+				<tr>
+					<td><input type="input" name="" value=""> info</td>
+					<td><input type="input" name="" value=""> info</td>
+				</tr>
+				<tr>
+					<td><input type="input" name="" value=""> info</td>
+					<td><input type="input" name="" value=""> info</td>
+				</tr>
+				<tr>
+					<td><input type="input" name="" value=""> info</td>
+					<td><input type="input" name="" value=""> info</td>
+				</tr>
+			</table>
+		</div>
+		<div id="text_area">
+			<textarea rows="10" cols="75"></textarea>
+			<button id="submit_ticket_button">Submit</button>
+		</div>
+	</div>
+	<div id="create_footer">
+		<button id="logout_button">Logout</button>
+	</div>
+</body>
+</html>

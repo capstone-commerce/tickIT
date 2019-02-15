@@ -1,0 +1,50 @@
+html, body{
+	max-width: 100%;
+	overflow-x: hidden;
+}
+table{
+	width: 75vw;
+}
+#home_banner{
+	left: 0%;
+	top: 0%;
+}
+#home_main{
+	transform: translate(-50%, -50%);
+	position: absolute;
+	text-align: center;
+	top: 20%;
+	left: 50%;
+	font-size: 24px;
+}
+#search_attributes{
+	float: right;
+	font-size: 16px;
+}
+#search_attributes input{
+	float: left;
+}
+#attribute_table{
+	width: 25vw;
+	text-align: left;
+}
+#table{
+	float: right;
+	overflow-y: scroll;
+}
+#ticket_table{
+	font-size: 32;
+	border-style: solid;
+}
+#ticket_table tr{
+	outline: thin solid;
+}
+#ticket_table tr:hover{
+	color: grey;
+	cursor: pointer;
+}
+#home_footer{
+	margin-top: 90vh;
+	margin-right: 10vw;
+	float:right;
+}

@@ -1,0 +1,10 @@
+html, body{
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+#edit_footer{
+	margin-top: 90vh;
+	margin-right: 10vw;
+	float:right;
+}

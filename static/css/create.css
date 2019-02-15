@@ -1,0 +1,27 @@
+html, body{
+	max-width: 100%;
+	overflow-x: hidden;
+}
+#create_ticket_menu{
+	transform: translate(-50%, -50%);
+	position: absolute;
+	text-align: center;
+	top: 20%;
+	left: 50%;
+	border: solid;
+	width: 70vw;
+	margin-top: 10vh;
+	/*height: 70vh;*/
+}
+#create_table{
+	/*margin-left: 50%;
+	margin-right: 50%;*/
+}
+#text_area{
+	float:left;
+}
+#create_footer{
+	margin-top: 90vh;
+	margin-right: 10vw;
+	float:right;
+}
