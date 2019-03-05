@@ -3,6 +3,25 @@ html, body{
 	overflow-x: hidden;
 }
 
+#edit_main{
+	transform: translate(-50%, -50%);
+	position: absolute;
+	text-align: center;
+	left: 50%;
+	width: 70vw;
+	margin-top: 10vh;
+}
+
+#ticket_info{
+	border: solid;
+	height: 30vh;
+}
+
+#table_of_updates{
+	border: solid;
+	height: 30vh;
+}
+
 #edit_footer{
 	margin-top: 90vh;
 	margin-right: 10vw;
