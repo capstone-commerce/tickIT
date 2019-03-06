@@ -13,23 +13,23 @@
 <body>
 	<div id="create_ticket_menu">
 		<h1>Create Ticket</h1>
-		<div id="create_table">
-			<table> <!-- parts id, date created, device brand, device serial no -->
-				<tr>
-					<td><input type="input" name="" value=""> <br> Customer Name</td>
-					<td><input type="input" name="" value=""> <br> Customer Email</td>
-					<td><input type="input" name="" value=""> <br> Brief Description</td>
-				</tr>
-				<tr>
-					<td><input type="input" name="" value=""> <br> Assigned Technician</td>
-					<td><input type="range" min="1" max="5" value="3" class="slider" id="priority_range"> <br> Priority</td>
-				</tr>
-			</table>
-		</div>
-		<div id="text_area">
-			<textarea rows="10" cols="75"></textarea>
-			<button id="submit_ticket_button">Submit</button>
-		</div>
+		<form action="email.php" method="post">
+			<div id="create_table">
+				<table> <!-- parts id, date created, device brand, device serial no -->
+					<tr>
+						<td><input type="text" name="name" value=""> <br> Customer Name</td>
+						<td><input type="text" name="email" value=""> <br> Customer Email</td>
+						<td><input type="text" name="description" value=""> <br> Brief Description</td>
+					</tr>
+					<tr>
+						<td><input type="text" name="technician" value=""> <br> Assigned Technician</td>
+						<td><input type="range" min="1" max="5" value="3" class="slider" id="priority_range"> <br> Priority</td>
+						<td><textarea rows="10" cols="50"></textarea></td>
+					</tr>
+				</table>
+			</div>
+		<input type="submit">
+		</form>
 	</div>
 	<div id="create_footer">
 		<button id="logout_button">Logout</button>
