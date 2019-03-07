@@ -1,36 +1,41 @@
 html, body{
+	height: 100%;
 	max-width: 100%;
 	overflow-x: hidden;
+	overflow-y: hidden;
 }
 table{
 	width: 75vw;
 }
 #home_banner{
-	left: 0%;
-	top: 0%;
+	height: 5%;
+	width: 100%;	
 }
+#home_sidebar{
+	float: left;
+	height: 100%;
+	width: 5%;
+}
+#home_sidebar button{
+	width: 100%;
+}
+
 #home_main{
-	transform: translate(-50%, -50%);
 	position: absolute;
 	text-align: center;
-	top: 20%;
-	left: 50%;
-	font-size: 24px;
-}
-#search_attributes{
-	float: right;
-	font-size: 16px;
-}
-#search_attributes input{
-	float: left;
+	top: 20vh;
+	left: 6vw;
 }
 #attribute_table{
-	width: 25vw;
+	float: left;
+	width: 75vw;
 	text-align: left;
 }
-#table{
-	float: right;
+#ticket_table_div{
+	height: 20vh;
+	float: left;
 	overflow-y: scroll;
+	overflow-x: hidden;
 }
 #ticket_table{
 	font-size: 32;
@@ -45,6 +50,9 @@ table{
 }
 #home_footer{
 	margin-top: 90vh;
-	margin-right: 10vw;
-	float:right;
+	height: 5%;
+	width: 100%;
+}
+#logout_button{
+	float: right;
 }

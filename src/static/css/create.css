@@ -1,6 +1,8 @@
 html, body{
+	height: 100%;
 	max-width: 100%;
 	overflow-x: hidden;
+	overflow-y: hidden;
 }
 #create_ticket_menu{
 	transform: translate(-50%, -50%);
