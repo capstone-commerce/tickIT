@@ -10,7 +10,7 @@
 			document.getElementById("create_ticket_button").onclick = function () {window.location.href='./create.php'};
 		}
 		function goto_update_ticket(){
-			window.location.href='./edit.html'
+			window.location.href='./edit.php'
 		}
 	</script>
 </head>
@@ -43,7 +43,7 @@
 					<th>Description</th>
 				</tr>
 				<?php
-					$tableValue = "<tr><td>TICKIT ID HERE</td><td>TICKIT ISSUE DESCRIPTION HERE</td></tr>";
+					$tableValue = "<tr onclick='goto_update_ticket();'><td>TICKIT ID HERE</td><td>TICKIT ISSUE DESCRIPTION HERE</td></tr>";
 					$spoofArray = array_fill(0, 20, $tableValue);
 				?>
 				<?php

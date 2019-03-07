@@ -25,7 +25,7 @@
 					<tr>
 						<td><input type="text" name="technician" value=""> <br> Assigned Technician</td>
 						<td><input type="range" min="1" max="5" value="3" class="slider" id="priority_range"> <br> Priority</td>
-						<td><textarea rows="10" cols="50"></textarea></td>
+						<td><textarea name="notes" rows="10" cols="50"></textarea></td>
 					</tr>
 				</table>
 			</div>

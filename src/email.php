@@ -1,8 +1,5 @@
 <html>
 <body>
-
-Email sent to <?php echo $_POST["email"]; ?>
-
 <?php
 //Import PHPMailer classes into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;
@@ -39,17 +36,29 @@ $mail->addAddress($_POST['email'], $_POST['name']);
 $mail->Subject = "Your tickIT for" . ' [' . $_POST['description'] . '] ';
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
-//$mail->msgHTML(file_get_contents('contents.html'), __DIR__);
+//$mail->msgHTML(file_get_contents('createdTicketEmail.html'), __DIR__);
 //Replace the plain text body with one created manually
-$mail->Body = 'Greetings ' . $_POST['name'] . ',' . "\n" . "\t" . 'A technician has created a tickIT for your issue [' . $_POST['description'] . '].' . "\n" . 'You can expect email updates from this address on the progress of your tickIT.';
+
+$mail->Body = 	'Greetings ' . $_POST['name'] . ',' . "<br><br>" . 
+		'Our technician [ADD TECHNICIAN NAME HERE] has created a tickIT for your issue [' . $_POST['description'] . '].' . "<br>" . 
+		'You can expect email updates from this address on the progress of your tickIT.' . "<br><br>" . 
+		'Best,' . "<br>" . 
+		'[ADD DEPARTMENT HERE]' . "<br>" . 
+		'[ADD UNIVERSITY HERE]';
+
 $mail->AltBody = 'ERROR: altbody message sent.';
 //Attach an image file
 //$mail->addAttachment('images/phpmailer_mini.png');
 //send the message, check for errors
 if (!$mail->send()) {
-    echo "Mailer Error: " . $mail->ErrorInfo;
+	echo "Mailer Error: " . $mail->ErrorInfo;
 } else {
-    echo "Message sent!";
+	echo "Email sent to " . $_POST["name"] . "<br>" . 
+	" at email address " . $_POST["email"] . "<br>" . 
+	"Redirecting to home...";
+	//redirects page to home.html after 3 seconds
+	header("refresh: 3; url=./home.php");
+	exit();
 }
 ?>
 </body>
