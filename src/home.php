@@ -29,7 +29,7 @@
 	<div id="home_sidebar">
 		<button id="create_ticket_button">Create Ticket</button>
 		<?php
-			if($_SESSION["user_type"] == "admin"){
+			if($_SESSION["user_type"] == "Administrator"){
 				echo("<button id='manage_technician_button'>Manage Technicians</button>");
 			}
 		?>
