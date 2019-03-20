@@ -16,7 +16,7 @@
 		<h1>Create Ticket</h1>
 		<form action="email.php" method="post">
 			<div id="create_table">
-				<table> <!-- parts id, date created, device brand, device serial no -->
+				<table>
 					<tr>
 						<td><input type="text" name="name" value=""> <br> Customer Name</td>
 						<td><input type="text" name="email" value=""> <br> Customer Email</td>

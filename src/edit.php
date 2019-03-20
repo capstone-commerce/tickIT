@@ -15,8 +15,10 @@
 	<div id="edit_main">
 		<h1>[Description of Ticket]</h1>
 		<div id="ticket_info">
+			ticket info
 		</div>
 		<div id="table_of_updates">
+			table of updates
 		</div>
 	</div>
 	<div id="edit_footer">

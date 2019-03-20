@@ -24,7 +24,7 @@ $mail->SMTPAuth = true;
 //Username to use for SMTP authentication - use full email address for gmail
 $mail->Username = "iwhitese@kent.edu";
 //Password to use for SMTP authentication
-$mail->Password = "Mezcal12345";
+$mail->Password = "Mezcal12345";	//not my pass anymore, wont work until we get tickit@kent.edu
 //Set who the message is to be sent from
 $mail->setFrom('iwhitese@kent.edu', 'tickIT');
 //Set an alternative reply-to address
@@ -52,10 +52,14 @@ $mail->AltBody = 'ERROR: altbody message sent.';
 //send the message, check for errors
 if (!$mail->send()) {
 	echo "Mailer Error: " . $mail->ErrorInfo;
+	header("refresh: 5; url=./create.php");
 } else {
 	echo "Email sent to " . $_POST["name"] . "<br>" . 
 	" at email address " . $_POST["email"] . "<br>" . 
 	"Redirecting to home...";
+
+	//sending ticket info to DB, should all be in POST
+
 	//redirects page to home.html after 3 seconds
 	header("refresh: 3; url=./home.php");
 	exit();

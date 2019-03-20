@@ -9,7 +9,13 @@
 			document.getElementById("logout_button").onclick = function () {window.location.href='./login.php'};
 			document.getElementById("create_ticket_button").onclick = function () {window.location.href='./create.php'};
 		}
-		function goto_update_ticket(){
+		function goto_update_ticket(id, desc, patronName, date){
+			<?php
+				$_SESSION['home_id'] = id;
+				$_SESSION['home_desc'] = desc;
+				$_SESSION['home_patronName'] = patronName;
+				$_SESSION['home_date'] = date;
+			?>
 			window.location.href='./edit.php'
 		}
 	</script>
@@ -43,10 +49,19 @@
 					<th>Description</th>
 				</tr>
 				<?php
-					$tableValue = "<tr onclick='goto_update_ticket();'><td>TICKIT ID HERE</td><td>TICKIT ISSUE DESCRIPTION HERE</td></tr>";
-					$spoofArray = array_fill(0, 20, $tableValue);
-				?>
-				<?php
+
+					//pull info from DB and populate home's table
+
+					$spoofTicketID = 000000001;
+					$spoofTicketDesc = "Install adware";
+					$spoofTicketPatron = "Jim";
+					$spoofTicketDate = "MAR-14-2019";
+					//spoof array for tickets on home.php
+					$spoofArray = array(
+					"<tr onclick=goto_update_ticket(".$spoofTicketID.",".$spoofTicketDesc.",".$spoofTicketPatron.",".$spoofTicketDate.");><td>".$spoofTicketID."</td><td>".$spoofTicketDesc."</td></tr>",
+					"<tr onclick='goto_update_ticket();'><td>000000002</td><td>I lost my dog</td></tr>",
+					"<tr onclick='goto_update_ticket();'><td>000000003</td><td>Broken Laptop</td></tr>");
+
 					foreach($spoofArray as $item){
 						echo($item);
 					}

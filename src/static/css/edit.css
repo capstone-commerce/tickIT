@@ -6,22 +6,21 @@ html, body{
 }
 
 #edit_main{
-	transform: translate(-50%, -50%);
 	position: absolute;
 	text-align: center;
-	left: 50%;
+	left: 15vw;
 	width: 70vw;
-	margin-top: 10vh;
+/*	margin-top: 10vh;*/
 }
 
 #ticket_info{
 	border: solid;
-	height: 30vh;
+	height: 40vh;
 }
 
 #table_of_updates{
 	border: solid;
-	height: 30vh;
+	height: 40vh;
 }
 
 #edit_footer{
