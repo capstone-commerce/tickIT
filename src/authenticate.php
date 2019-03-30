@@ -16,7 +16,7 @@
 	$spoofTechPassword = "password";
 //	$spoofTechUsertype = "tech";
 
-	if((($_SESSION["username"] == $spoofAdminUsername) and ($_SESSION["password"] == $spoofAdminPassword)) or 
+	if((($_SESSION["username"] == $spoofAdminUsername) and ($_SESSION["password"] == $spoofAdminPassword)) or
 	(($_SESSION["username"] == $spoofTechUsername)) and ($_SESSION["password"] == $spoofTechPassword)){
 		switch($_SESSION["username"]){
 			case "admin":	$_SESSION["user_type"] = "Administrator"; break;

@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php session_start();
+
+	if($_SESSION["user_type"] != "Administrator") or ($_SESSION["user_type"] != "Technician"){
+		header("url=./login.php");
+	}
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
