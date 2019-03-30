@@ -2,6 +2,7 @@ html, body{
 	max-width: 100%;
 	overflow-x: hidden;
 	overflow-y: hidden;
+	background-color: black;
 }
 body{
 	transform: translate(-50%, -50%);
@@ -10,8 +11,17 @@ body{
 	top: 25%;
 	left: 50%;
 }
+#login_input{
+	color: white;
+}
 #login_input input{
-	color: grey;
+	color: black;
+}
+#login_banner{
+	margin-top: 30vh;
+	height: 307px;
+	width: 446px;
+	background: url("../img/tickit_login_02.png");
 }
 #login_banner h1{
 	font-size: 72px;
