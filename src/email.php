@@ -30,13 +30,13 @@ $mail->SMTPSecure = 'tls';
 //Whether to use SMTP authentication
 $mail->SMTPAuth = true;
 //Username to use for SMTP authentication - use full email address for gmail
-$mail->Username = "iwhitese@kent.edu";
+$mail->Username = "tickit.capstone@gmail.com";
 //Password to use for SMTP authentication
-$mail->Password = "Mezcal12345";	//not my pass anymore, wont work until we get tickit@kent.edu
+$mail->Password = "Capstone1'";
 //Set who the message is to be sent from
-$mail->setFrom('iwhitese@kent.edu', 'tickIT');
+$mail->setFrom('tickit.capstone@gmail.com', 'tickIT');
 //Set an alternative reply-to address
-$mail->addReplyTo('iwhitese@kent.edu', 'tickIT');
+$mail->addReplyTo('tickit.capstone@gmail.com', 'tickIT');
 //Set who the message is to be sent to
 //$mail->addAddress('iwhitese@kent.edu', 'John Doe');
 $mail->addAddress($_POST['email'], $_POST['name']);
@@ -69,7 +69,7 @@ if (!$mail->send()) {
 	//sending ticket info to DB, should all be in POST
 
 	//redirects page to home.html after 3 seconds
-	header("refresh: 3; url=./home.php");
+	header("refresh: 2; url=./home.php");
 	exit();
 }
 ?>

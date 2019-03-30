@@ -13,7 +13,6 @@
 	<link rel="stylesheet" type="text/css" href="./static/css/home.css">
 	<script>
 		window.onload = function(){
-			document.getElementById("logout_button").onclick = function () {window.location.href='./login.php'};
 			document.getElementById("create_ticket_button").onclick = function () {window.location.href='./create.php'};
 		}
 		function goto_update_ticket(){
@@ -71,7 +70,9 @@
 		</div>
 	</div>
 	<div id="home_footer">
-		<button id="logout_button">Logout</button>
+		<form id="logout_button" action="logout.php">
+			<input type="submit" name="logout" value="logout"/>
+		</form>
 	</div>
 </body>
 </html>

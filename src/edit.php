@@ -29,7 +29,9 @@
 		</div>
 	</div>
 	<div id="edit_footer">
-		<button id="logout_button">Logout</button>
+		<form id="logout_button" action="logout.php">
+			<input type="submit" name="logout" value="logout"/>
+		</form>
 	</div>
 </body>
 </html>

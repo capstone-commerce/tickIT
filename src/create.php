@@ -15,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="./static/css/create.css">
 	<script>
 		window.onload = function(){
-			document.getElementById("logout_button").onclick = function () {window.location.href='./login.php'};
+			document.getElementById("home_button").onclick = function () {window.location.href='./home.php'};
 		};
 	</script>
 </head>
@@ -41,7 +41,7 @@
 		</form>
 	</div>
 	<div id="create_footer">
-		<button id="logout_button">Logout</button>
+		<button id="home_button">Home</button>
 	</div>
 </body>
 </html>
