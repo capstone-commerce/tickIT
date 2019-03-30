@@ -1,10 +1,11 @@
 <?php session_start();
-
-	if($_SESSION["user_type"] != "Administrator") or ($_SESSION["user_type"] != "Technician"){
-		header("url=./login.php");
+	//checking if user was authenticated by checking if they have a usertype
+	if(!isset($_SESSION["user_type"])){
+		echo("user_type is NOT set");
+		header("Location: ./login.php");
+		exit();
 	}
-
- ?>
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,13 +16,7 @@
 			document.getElementById("logout_button").onclick = function () {window.location.href='./login.php'};
 			document.getElementById("create_ticket_button").onclick = function () {window.location.href='./create.php'};
 		}
-		function goto_update_ticket(id, desc, patronName, date){
-			<?php
-				$_SESSION['home_id'] = id;
-				$_SESSION['home_desc'] = desc;
-				$_SESSION['home_patronName'] = patronName;
-				$_SESSION['home_date'] = date;
-			?>
+		function goto_update_ticket(){
 			window.location.href='./edit.php'
 		}
 	</script>
@@ -64,7 +59,7 @@
 					$spoofTicketDate = "MAR-14-2019";
 					//spoof array for tickets on home.php
 					$spoofArray = array(
-					"<tr onclick=goto_update_ticket(".$spoofTicketID.",".$spoofTicketDesc.",".$spoofTicketPatron.",".$spoofTicketDate.");><td>".$spoofTicketID."</td><td>".$spoofTicketDesc."</td></tr>",
+//					"<tr onclick='goto_update_ticket();'><td>".$spoofTicketID."</td><td>".$spoofTicketDesc."</td></tr>","
 					"<tr onclick='goto_update_ticket();'><td>000000002</td><td>I lost my dog</td></tr>",
 					"<tr onclick='goto_update_ticket();'><td>000000003</td><td>Broken Laptop</td></tr>");
 

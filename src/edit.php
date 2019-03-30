@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php session_start();
+	//checking if user was authenticated by checking if they have a usertype
+	if(!isset($_SESSION["user_type"])){
+		echo("user_type is NOT set");
+		header("Location: ./login.php");
+		exit();
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
