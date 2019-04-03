@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+<?php session_start(); 
+  require("dbconnect.php");?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +19,8 @@
 	</div>
 	<div id="login_input">
 		<form action="authenticate.php" method="post">
-			Username<input type="text" name="username" value=""> <br>
-			Password<input type="text" name="password" value=""> <br>
+			Username<input type="text" name="username" value="" id="username"> <br>
+			Password<input type="text" name="password" value="" id="password"> <br>
 			<input type="submit" value="Login">
 		</form>
 	</div>
