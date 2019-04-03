@@ -2,7 +2,7 @@ html, body{
 	max-width: 100%;
 	overflow-x: hidden;
 	overflow-y: hidden;
-	background-color: black;
+	background-color: lightblue;
 }
 body{
 	transform: translate(-50%, -50%);
@@ -12,12 +12,22 @@ body{
 	left: 50%;
 }
 #login_input{
-	color: white;
+	width:100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
 }
 #login_input input{
 	color: black;
 }
 #login_banner{
+	font-family: veranda;
+	font-size: 20px;
+	color: white;
+	text-align: center;
 	margin-top: 30vh;
 	height: 307px;
 	width: 446px;
