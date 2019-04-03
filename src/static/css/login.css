@@ -2,9 +2,9 @@ html, body{
 	max-width: 100%;
 	overflow-x: hidden;
 	overflow-y: hidden;
-	background-color: lightblue;
 }
 body{
+	background-color: lightblue;
 	transform: translate(-50%, -50%);
 	position: absolute;
 	text-align: center;
@@ -24,8 +24,6 @@ body{
 	color: black;
 }
 #login_banner{
-	font-family: veranda;
-	font-size: 20px;
 	color: white;
 	text-align: center;
 	margin-top: 30vh;
@@ -35,4 +33,10 @@ body{
 }
 #login_banner h1{
 	font-size: 72px;
+	font-family: veranda;
+}
+
+#login_banner p{
+	font-family: veranda;
+	font-size: 20px;
 }
