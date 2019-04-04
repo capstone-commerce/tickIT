@@ -11,33 +11,29 @@ body{
 	top: 25%;
 	left: 50%;
 }
-#login_input{
-	width:100%;
-	padding: 12px 20px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-sizing: border-box;
-	background_color: lightsalmon;
+input[type=text], select{
+width:100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
 }
-#login_input input{
-	color: black;
+input[type=submit]{
+width: 100%;
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+border-radius: 4px;
+cursor: pointer;
 }
-#login_banner{
-	color: white;
-	text-align: center;
-	margin-top: 30vh;
-	height: 307px;
-	width: 446px;
-	background: url("../img/tickit_login_02.png");
+input[type=submit]: hover{
+background-color: #45a049;
 }
-#login_banner h1{
-	font-size: 72px;
-	font-family: veranda;
-}
-
-#login_banner p{
-	font-family: veranda;
-	font-size: 20px;
+div{
+border-radius: 5px;
+background-color: lightsalmon;
+padding: 20px;
 }
