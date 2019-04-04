@@ -26,3 +26,7 @@
 	</div>
 </body>
 </html>
+<?php
+  mysqli_close($CSDB);
+  mysqli_close($LocalDB);
+  ?>
