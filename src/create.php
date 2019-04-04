@@ -1,13 +1,48 @@
 <?php session_start();
-
 	//checking if user was authenticated by checking if they have a usertype
 	if(!isset($_SESSION["user_type"])){
 		echo("user_type is NOT set");
 		header("Location: ./login.php");
 		exit();
 	}
-
 ?>
+<?php
+	require('dbconnect.php');
+		if(isset($_POST['add'])) {
+            
+            if(! get_magic_quotes_gpc() ) {
+               $c_name = addslashes ($_POST['c_name']);
+               $t_name = addslashes ($_POST['t_name']);
+            } else {
+               $c_name_name = $_POST['c_name'];
+               $t_dept = $_POST['t_name'];
+            }
+            $c_email = $_POST['c_email'];
+            $description = $_POST['description'];
+			
+			// sql query to add the info to Tickets table
+			// figure this out
+			// does not work
+            $sql = "INSERT INTO Create Tickets". 
+               "(ID,name, dept_name, salary) "."VALUES ".
+               "('$i_ID','$i_name','$i_dept', '$i_salary')";
+            
+			//mysqli_select_db($conn,'university');
+            $retval = mysqli_query($conn, $sql);
+         
+            if(! $retval ) {
+               die('Could not enter data: ' . mysqli_error($conn));
+            }
+         
+            echo "Entered data successfully\n";
+			
+			
+            mysqli_close($conn);
+         }  
+		 else {
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,4 +79,9 @@
 		<button id="home_button">Home</button>
 	</div>
 </body>
+
+<?php
+}
+?>
+
 </html>
