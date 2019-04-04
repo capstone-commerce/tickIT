@@ -25,7 +25,7 @@
 <body>
 	<div id="manage_main">
 		<p>this is the super cool manage page for admins</p>
-		<p>needs: 
+		<p>needs:
 		<ul>
 			<li>technician account creation</li>
 			<li>technician account deletion</li>

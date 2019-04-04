@@ -14,6 +14,7 @@
 	<script>
 		window.onload = function(){
 			document.getElementById("create_ticket_button").onclick = function () {window.location.href='./create.php'};
+			document.getElementById("manage_technician_button").onclick = function () {window.location.href='./manage.php'};
 		}
 		function goto_update_ticket(){
 			window.location.href='./edit.php'
