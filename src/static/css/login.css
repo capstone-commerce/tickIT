@@ -31,11 +31,11 @@ input[type=submit]{
 	border: none;
 	border-radius: 8px;
 	cursor: pointer;
-	transition-duration: 0.4s;
+	transition-duration: 0.3s;
+	opacity= 0.6;
+	display: inline-block;
 }
-input[type=submit]: hover{
-	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
+input[type=submit]: hover{opacity: 1}
 #login_banner{
 	color: white;
 	display:block;
