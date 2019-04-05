@@ -22,7 +22,7 @@ input[type=text], select{
 	opacity: 0.8;
 	filter: alpha(opacity=80);
 }
-	input[type=submit]{
+input[type=submit]{
 	width: 100%;
 	color: white;
 	background-color: limegreen;
@@ -45,7 +45,9 @@ input[type=text], select{
 	background-image: url("../img/tickit_login_02.png");
 }
 div{
-	border-radius: 5px;
+	border-radius: 25px;
 	background-color: lightsalmon;
 	padding: 20px;
+width:200px;
+height: 150px;
 }
