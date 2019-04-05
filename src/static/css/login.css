@@ -7,7 +7,7 @@ body{
 	background-image: linear-gradient(lightseagreen, lightblue);
 	transform: translate(-50%, -50%);
 	position: absolute;
-	text-align: center;
+	text-align: left;
 	top: 25%;
 	left: 50%;
 }
