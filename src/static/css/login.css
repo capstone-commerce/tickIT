@@ -46,6 +46,6 @@ input[type=submit]{
 }
 div{
 	border-radius: 25px;
-	background-color: lightsalmon;
+	background-image: linear-gradient(salmon, lightsalmon);
 	padding: 20px;
 }
