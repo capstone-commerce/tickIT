@@ -19,6 +19,8 @@ display: inline-block;
 border: 1px solid #ccc;
 border-radius: 4px;
 box-sizing: border-box;
+opacity: 0.8;
+filter: alpha(opacity=80);
 }
 input[type=submit]{
 width: 100%;
@@ -34,10 +36,10 @@ background-color: #45a049;
 }
 #login_banner{
 	color: white;
-display:block;
-margin-left: auto;
-margin-right: auto;
-width: 50%;
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
 	text-align: center;
 	margin-top: 30vh;
 	height: 307px;
