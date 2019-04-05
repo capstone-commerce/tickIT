@@ -1,5 +1,13 @@
 <?php
 
+	/*
+	//checking if user was authenticated by checking if they have a usertype
+	if(!isset($_SESSION["user_type"])){
+		echo("user_type is NOT set");
+		header("Location: ./login.php");
+		exit();
+	}
+	*/
 
  $servername = "localhost";  // if you run on local server the name is "localhost:3306". If you run on cs server, use only "localhost"
 $username = "root";

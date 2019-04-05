@@ -2,6 +2,15 @@
 session_start();
 require("dbconnect.php");
 
+	/*
+	//checking if user was authenticated by checking if they have a usertype
+	if(!isset($_SESSION["user_type"])){
+		echo("user_type is NOT set");
+		header("Location: ./login.php");
+		exit();
+	}
+	*/
+
   if(isset($_POST["username"]) && isset($_POST["password"])){
      $_SESSION["username"] = $_POST["username"];
      $_SESSION["password"] = $_POST["password"];
