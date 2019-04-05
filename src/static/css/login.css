@@ -34,6 +34,10 @@ background-color: #45a049;
 }
 #login_banner{
 	color: white;
+display:block;
+margin-left: auto;
+margin-right: auto;
+width: 50%;
 	text-align: center;
 	margin-top: 30vh;
 	height: 307px;
