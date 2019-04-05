@@ -19,6 +19,8 @@ input[type=text], select{
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	box-sizing: border-box;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
 }
 	input[type=submit]{
 	width: 100%;
@@ -48,7 +50,4 @@ div{
 	border-radius: 5px;
 	background-color: lightsalmon;
 	padding: 20px;
-
-	opacity: 0.8;
-	filter: alpha(opacity=80);
 }
