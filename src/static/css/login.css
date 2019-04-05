@@ -46,6 +46,6 @@ input[type=submit]{
 }
 div{
 	border-radius: 25px;
-	background-image: linear-gradient(salmon, lightsalmon);
+	background-image: linear-gradient(lightsalmon, peachpuff);
 	padding: 20px;
 }
