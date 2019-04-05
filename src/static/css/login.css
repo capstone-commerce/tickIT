@@ -32,6 +32,14 @@ cursor: pointer;
 input[type=submit]: hover{
 background-color: #45a049;
 }
+#login_banner{
+	color: white;
+	text-align: center;
+	margin-top: 30vh;
+	height: 307px;
+	width: 446px;
+	background: url("../img/tickit_login_02.png");
+}
 div{
 border-radius: 5px;
 background-color: lightsalmon;
