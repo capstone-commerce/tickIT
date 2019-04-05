@@ -12,12 +12,12 @@
 	</script>
 </head>
 <body>
-	<div id="login_banner", align="right">
+	<div id="login_banner">
 		<!-- <h1>tickIT</h1> -->
 		<!-- <img src="./static/img/tickit_login_01.png" alt="TickIT" height="521" width="800"> -->
 		<!-- <p>Smarter Ticketing</p> -->
 	</div>
-	<div id="login_input", align="left">
+	<div id="login_input">
 		<form action="authenticate.php" method="post">
 			Username<input type="text" name="username" value="" id="username"> <br>
 			Password<input type="text" name="password" value="" id="password"> <br>
