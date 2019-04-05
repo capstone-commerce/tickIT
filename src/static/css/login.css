@@ -4,7 +4,7 @@ html, body{
 	overflow-y: hidden;
 }
 body{
-	background-image: linear-gradient(red, yellow);
+	background-image: linear-gradient(turquoise, lightblue);
 	transform: translate(-50%, -50%);
 	position: absolute;
 	text-align: center;
