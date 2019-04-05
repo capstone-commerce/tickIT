@@ -4,8 +4,7 @@ html, body{
 	overflow-y: hidden;
 }
 body{
-	
-	background: url("../img/tickit_login_02.png");
+	background-color: lightblue;
 	transform: translate(-50%, -50%);
 	position: absolute;
 	text-align: center;
@@ -39,7 +38,7 @@ background-color: #45a049;
 	margin-top: 30vh;
 	height: 307px;
 	width: 446px;
-
+	background-image: url("../img/tickit_login_02.png");
 }
 div{
 border-radius: 5px;
