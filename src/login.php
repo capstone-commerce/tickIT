@@ -1,5 +1,4 @@
-<?php session_start(); 
-  require("dbconnect.php");?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +25,4 @@
 	</div>
 </body>
 </html>
-<?php
-  mysqli_close($CSDB);
-  mysqli_close($LocalDB);
-  ?>
+
