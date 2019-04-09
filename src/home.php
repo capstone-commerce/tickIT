@@ -1,12 +1,10 @@
 <?php session_start();
-	
 	//checking if user was authenticated by checking if they have a usertype
 	if(!isset($_SESSION["user_type"])){
 		echo("user_type is NOT set");
 		header("Location: ./login.php");
 		exit();
 	}
-	
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,7 +16,8 @@
 			document.getElementById("create_ticket_button").onclick = function () {window.location.href='./create.php'};
 			document.getElementById("manage_technician_button").onclick = function () {window.location.href='./manage.php'};
 		}
-		function goto_update_ticket(){
+		function goto_update_ticket(/*$ticketNum*/){
+      //$_SESSION["update_ticketNum"] = $ticketNum;
 			window.location.href='./edit.php'
 		}
 	</script>
@@ -50,24 +49,31 @@
 				<tr>
 					<th>Ticket ID</th>
 					<th>Description</th>
-				</tr>
+          <th>Date Created</th>
+          <th>Urgency</th>
 				<?php
-
+          require("dbconnect.php");
 					//pull info from DB and populate home's table
-
-					$spoofTicketID = 000000001;
-					$spoofTicketDesc = "Install adware";
-					$spoofTicketPatron = "Jim";
-					$spoofTicketDate = "MAR-14-2019";
-					//spoof array for tickets on home.php
-					$spoofArray = array(
-//					"<tr onclick='goto_update_ticket();'><td>".$spoofTicketID."</td><td>".$spoofTicketDesc."</td></tr>","
-					"<tr onclick='goto_update_ticket();'><td>000000002</td><td>I lost my dog</td></tr>",
-					"<tr onclick='goto_update_ticket();'><td>000000003</td><td>Broken Laptop</td></tr>");
-
-					foreach($spoofArray as $item){
-						echo($item);
-					}
+          if($_SESSION["user_type"] == "Technician"){
+            echo "</tr>";
+					  $techName = $_SESSION["username"];
+            $queueQuery = "select ticket_number, issue, date_created, urgency from Tickets where username='$techName';";
+            $Array = mysqli_query($CSDB, $queueQuery);
+					  while($row = mysqli_fetch_assoc($Array)){
+               echo "<tr onclick='goto_update_ticket();'>";
+               echo "<td>" . $row["ticket_number"] . "</td><td>" . $row["issue"] . "</td><td>" . $row["date_created"] . "</td><td>" . $row["urgency"] . "</td>";
+               echo "</tr>";
+            }
+          }else if($_SESSION["user_type"] == "Administrator"){
+            echo "<th>Assignee</th></tr>";
+             $queueQuery = "select ticket_number, issue, date_created, urgency, username from Tickets;";
+             $Array = mysqli_query($CSDB, $queueQuery);
+					  while($row = mysqli_fetch_assoc($Array)){
+               echo "<tr onclick='goto_update_ticket();'>";
+               echo "<td>" . $row["ticket_number"] . "</td><td>" . $row["issue"] . "</td><td>" . $row["date_created"] . "</td><td>". $row["urgency"]."</td><td>". $row['username']."</td>";
+               echo "</tr>";
+           }
+          }
 				?>
 			</table>
 		</div>

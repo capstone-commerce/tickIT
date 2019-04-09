@@ -1,0 +1,48 @@
+html, body{
+	height: 100%;
+	max-width: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+table{
+	width: 75vw;
+}
+#manage_banner{
+	height: 5%;
+	width: 100%;	
+}
+#manage_sidebar{
+	float: left;
+	height: 100%;
+	width: 5%;
+}
+#manage_sidebar button{
+	width: 100%;
+}
+#manage_main{
+	position: absolute;
+	text-align: center;
+	top: 20vh;
+	left: 6vw;
+}
+#tech_table{
+	/*border: solid;*/
+}
+#tech_table_header{
+	text-align: left;
+}
+#tech_table tr{
+	outline: thin solid;
+}
+#tech_table tr:hover{
+	color: grey;
+	cursor: pointer;
+}
+#manage_footer{
+	margin-top: 90vh;
+	height: 5%;
+	width: 100%;
+}
+#logout_button{
+	float: right;
+}
