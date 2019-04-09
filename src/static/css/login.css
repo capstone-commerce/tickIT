@@ -5,6 +5,7 @@ html, body{
 	overflow-y: hidden;
 }
 body{
+	color: white;
 	background-image: linear-gradient(lightseagreen, lightblue);
 	transform: translate(-50%, -50%);
 	position: absolute;
