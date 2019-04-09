@@ -9,7 +9,8 @@ body{
 	transform: translate(-50%, -50%);
 	position: absolute;
 	text-align: center;
-	right: 175px;
+	top: 25%;
+	left: 50%;
 }
 input[type=text], select{
 	width:100%;
