@@ -31,6 +31,10 @@ table{
 #tech_table_header{
 	text-align: left;
 }
+#tech_table_header tr:hover{
+	color: black;
+	cursor: default;
+}
 #tech_table tr{
 	outline: thin solid;
 }

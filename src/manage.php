@@ -38,21 +38,23 @@
 	</div>
 	<div id="manage_main">
 		<table id="tech_table">
-			<tr id="tech_table_header"><td>Technicians</td></tr>
+			<tr id="tech_table_header"><td><h3>Users</h3></td></tr>
 			<?php
-			$queueQuery = "select username from Users";
-			$Array = mysqli_query($CSDB, $queueQuery);
-			while($row = mysqli_fetch_assoc($Array)){
-				echo("<tr><td>" . $row["username"] . "</td></tr>");
-			}
+				require("dbconnect.php");
+				$queueQuery = "select username, role from Users where role='Administrator'";
+				$Array = mysqli_query($CSDB, $queueQuery);
+				while($row = mysqli_fetch_assoc($Array)){
+					echo("<tr><td>" . $row["username"] . " | " . $row["role"] . "</td></tr>");
+				}
 			?>
-			<!--
-			<tr><td>tech_1</td></tr>
-			<tr><td>tech_2</td></tr>
-			<tr><td>tech_3</td></tr>
-			<tr><td>tech_4</td></tr>
-			<tr><td>tech_5</td></tr>
-			-->
+			<?php
+				require("dbconnect.php");
+				$queueQuery = "select username, role from Users where role='Technician'";
+				$Array = mysqli_query($CSDB, $queueQuery);
+				while($row = mysqli_fetch_assoc($Array)){
+					echo("<tr><td>" . $row["username"] . " | " . $row["role"] . "</td></tr>");
+				}
+			?>
 		</table>
 	</div>
 	<div id="manage_footer">
