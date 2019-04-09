@@ -16,7 +16,8 @@
 			document.getElementById("create_ticket_button").onclick = function () {window.location.href='./create.php'};
 			document.getElementById("manage_technician_button").onclick = function () {window.location.href='./manage.php'};
 		}
-		function goto_update_ticket(){
+		function goto_update_ticket(/*$ticketNum*/){
+      //$_SESSION["update_ticketNum"] = $ticketNum;
 			window.location.href='./edit.php'
 		}
 	</script>
