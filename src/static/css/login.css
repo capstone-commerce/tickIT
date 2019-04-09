@@ -6,7 +6,7 @@ html, body{
 body{
 	background-image: linear-gradient(lightseagreen, lightblue);
 	transform: translate(-50%, -50%);
-	position: absolute;
+	position: relative;
 	text-align: center;
 	top: 25%;
 	left: 50%;
