@@ -14,7 +14,7 @@ body{
 	padding-top:50%;
 	padding-right: 50%;
 	padding-bottom: 20%;
-	padding-left:120%;
+	padding-left:center;
 }
 input[type=text], select{
 	width:100%;
