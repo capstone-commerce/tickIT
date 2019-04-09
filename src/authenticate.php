@@ -4,8 +4,8 @@ require("dbconnect.php");
 
 if(isset($_POST["username"]) && isset($_POST["password"])){
      require("dbconnect.php");
-     $_SESSION["username"] = $_POST["username"];
-     $_SESSION["password"] = $_POST["password"];
+     $_SESSION["username"] = filter_var($_POST["username"], 515);
+     $_SESSION["password"] = filter_var($_POST["password"], 515);
 
      $sessionUser = filter_var($_POST["username"], 515);
      $sessionPass = filter_var($_POST["password"], 515);
