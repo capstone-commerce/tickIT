@@ -4,12 +4,12 @@ html, body{
 	overflow-y: hidden;
 }
 body{
+	color: white;
 	background-image: linear-gradient(lightseagreen, lightblue);
 	transform: translate(-50%, -50%);
-	position: relative;
+	position: absolute;
 	text-align: center;
-	top: 25%;
-	left: 50%;
+	right: 175px;
 }
 input[type=text], select{
 	width:100%;
