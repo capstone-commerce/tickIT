@@ -4,10 +4,9 @@ html, body{
 	overflow-y: hidden;
 }
 body{
-	background-color: lightblue;
 	background-image: linear-gradient(lightseagreen, lightblue);
 	transform: translate(-50%, -50%);
-	position: absolute;
+	
 	text-align: center;
 	top: 25%;
 	left: 50%;
