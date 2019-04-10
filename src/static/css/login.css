@@ -11,13 +11,12 @@ body{
 	text-align: center;
 	/*top: 25%;
 	left: 50%;*/
-	padding-top:50px;
-	padding-right: 30px;
-	padding-bottom: 50px;
-	padding-left:80px;
+	padding-top:50%;
+	padding-right: 50%;
+	padding-bottom: 20%;
+	padding-left:110%;
 }
 input[type=text], select{
-	width:100%;
 	padding: 12px 20px;
 	margin: 8px 0;
 	display: inline-block;
@@ -28,7 +27,6 @@ input[type=text], select{
 	filter: alpha(opacity=80);
 }
 input[type=submit]{
-	width: 100%;
 	color: white;
 	background-image: linear-gradient(to bottom right, limegreen, palegreen);
 	padding: 14px 20px;
@@ -52,6 +50,7 @@ input[type=submit]{
 	box-shadow: 10px 10px 5px steelblue;
 }
 div{
+	width: 446px;
 	border-radius: 25px;
 	background-image: linear-gradient(lightsalmon, peachpuff);
 	padding: 20px;

@@ -1,0 +1,58 @@
+html, body{
+	height: 100%;
+	max-width: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	background-image: linear-gradient(lightseagreen, lightblue);
+}
+/*body{
+	color: white;
+	background-image: linear-gradient(lightseagreen, lightblue);
+	transform: translate(-50%, -50%);
+	position: absolute;
+	text-align: center;
+	top: 25%;
+	left: 50%;
+	padding-top:50%;
+	padding-right: 50%;
+	padding-bottom: 20%;
+	padding-left:110%;
+}*/
+table{
+	width: 75vw;
+}
+#settings_banner{
+	height: 5%;
+	width: 100%;	
+	text-align: center;
+}
+#settings_sidebar{
+	float: left;
+	height: 100%;
+	width: 5%;
+}
+#settings_sidebar button{
+	width: 100%;
+	border-radius: 14px;
+	cursor: pointer;
+	padding: 12px 80px;
+	background-image: linear-gradient(to bottom right, limegreen, palegreen);
+	box-shadow: 10px 10px 5px steelblue;
+	margin: 2px 0;
+	border: 1px solid #ccc;
+}
+
+#settings_main{
+	position: absolute;
+	text-align: center;
+	top: 20vh;
+	left: 6vw;
+}
+#settings_footer{
+	margin-top: 90vh;
+	height: 5%;
+	width: 100%;
+}
+#logout_button{
+	float: right;
+}

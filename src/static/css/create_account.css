@@ -7,19 +7,19 @@ html, body{
 table{
 	width: 75vw;
 }
-#manage_banner{
+#create_account_banner{
 	height: 5%;
 	width: 100%;	
 }
-#manage_sidebar{
+#create_account_sidebar{
 	float: left;
 	height: 100%;
 	width: 5%;
 }
-#manage_sidebar button{
+#create_account_sidebar button{
 	width: 100%;
 }
-#manage_main{
+#create_account_main{
 	position: absolute;
 	text-align: center;
 	top: 20vh;
@@ -42,7 +42,7 @@ table{
 	color: grey;
 	cursor: pointer;
 }
-#manage_footer{
+#create_account_footer{
 	margin-top: 80vh;
 	height: 5%;
 	width: 100%;
