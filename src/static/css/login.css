@@ -17,7 +17,6 @@ body{
 	padding-left:110%;
 }
 input[type=text], select{
-	width:100%;
 	padding: 12px 20px;
 	margin: 8px 0;
 	display: inline-block;
@@ -28,10 +27,9 @@ input[type=text], select{
 	filter: alpha(opacity=80);
 }
 input[type=submit]{
-	width: 100%;
 	color: white;
 	background-image: linear-gradient(to bottom right, limegreen, palegreen);
-	padding: 20px;
+	padding: 14px 20px;
 	margin: 8px 0;
 	border: none;
 	border-radius: 8px;
