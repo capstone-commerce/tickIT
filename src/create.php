@@ -16,18 +16,20 @@
                $c_name = addslashes ($_POST['c_name']);
                $t_name = addslashes ($_POST['t_name']);
             } else {
-               $c_name_name = $_POST['c_name'];
-               $t_dept = $_POST['t_name'];
+               $c_name = $_POST['c_name'];
+               $t_name = $_POST['t_name'];
             }
+            
             $c_email = $_POST['c_email'];
             $description = $_POST['description'];
-			
+            $notes = $_POST['notes'];
+            //$priority = $_POST['priority'];
+
 			// sql query to add the info to Tickets table
-			// figure this out
-			// does not work
-            $sql = "INSERT INTO Create Tickets". 
-               "(ID,name, dept_name, salary) "."VALUES ".
-               "('$i_ID','$i_name','$i_dept', '$i_salary')";
+			// test now
+            $sql = "INSERT INTO Tickets". 
+               "(customer_name,cusomer_email,issue,urgency,username,comments) "."VALUES ".
+               "('$c_name','$c_email','$description', 'slider.value','$t_name','$notes')";
             
 			//mysqli_select_db($conn,'university');
             $retval = mysqli_query($conn, $sql);
@@ -35,10 +37,7 @@
             if(! $retval ) {
                die('Could not enter data: ' . mysqli_error($conn));
             }
-         
             echo "Entered data successfully\n";
-			
-			
             mysqli_close($conn);
          }  
 		 else {
@@ -69,19 +68,29 @@
 					</tr>
 					<tr>
 						<td><input type="text" name="technician" value=""> <br> Assigned Technician</td>
-						<td><input type="range" min="1" max="5" value="3" class="slider" id="priority_range"> <br> Priority</td>
+						<td><input type="range" min="1" max="5" value="3" class="slider" id="priority_range"> <br> Priority <span id="demo"></span></td>
 						<td><textarea name="notes" rows="10" cols="50"></textarea></td>
 					</tr>
 				</table>
 			</div>
-		<input type="submit">
+
+    <script>
+    var slider = document.getElementById("priority_range");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function() {
+        output.innerHTML = this.value;
+    }
+    </script>
+			
+				<input type="submit">
 		</form>
 	</div>
 	<div id="create_footer">
 		<button id="home_button">Home</button>
 	</div>
 </body>
-
 <?php
 }
 ?>
