@@ -1,4 +1,4 @@
-<?php session_start();
+<?php session_start(); require('dbconnect.php');
 	//checking if user was authenticated by checking if they have a usertype
 	if(!isset($_SESSION["user_type"])){
 		echo("user_type is NOT set");
@@ -14,51 +14,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Create Ticket | tickIT</title>
+	<title>Manage Technicians | tickIT</title>
 	<link rel="stylesheet" type="text/css" href="./static/css/manage.css">
 	<script>
 		window.onload = function(){
 			document.getElementById("home_button").onclick = function () {window.location.href='./home.php'};
+			document.getElementById("create_tech_button").onclick = function () {window.location.href='./create_account.php'};
 		};
 	</script>
 </head>
 <body>
-		<!--
-		<p>this is the super cool manage page for admins</p>
-		<p>needs:
-		<ul>
-			<li>technician account creation</li>
-			<li>technician account deletion</li>
-			<li>transfering administrator privleges (keep in mind:only ONE admin at a time)</li>
-		</ul>
-		</p>
-		-->
 	<div id="manage_banner">
+		<h2>Manage Technicians</h2>
 		<button id="home_button">Home</button>
+		<button id="create_tech_button">Create Account</button>
 	</div>
 	<div id="manage_main">
+TODO: Click technician name, go to their managetech.php page
 		<table id="tech_table">
-			<tr id="tech_table_header"><td><h3>Users</h3></td></tr>
+			<tr><td><h3>Users</h3></td><td><h3>Role</h3></td></tr>
 			<?php
-				require("dbconnect.php");
 				$queueQuery = "select username, role from Users where role='Administrator'";
 				$Array = mysqli_query($CSDB, $queueQuery);
 				while($row = mysqli_fetch_assoc($Array)){
-					echo("<tr><td>" . $row["username"] . " | " . $row["role"] . "</td></tr>");
+					echo("<tr><td>" . $row["username"] . "</td><td>" . $row["role"] . "</td></tr>");
 				}
 			?>
 			<?php
-				require("dbconnect.php");
 				$queueQuery = "select username, role from Users where role='Technician'";
 				$Array = mysqli_query($CSDB, $queueQuery);
 				while($row = mysqli_fetch_assoc($Array)){
-					echo("<tr><td>" . $row["username"] . " | " . $row["role"] . "</td></tr>");
+					echo("<tr><td>" . $row["username"] . "</td><td>" . $row["role"] . "</td></tr>");
 				}
 			?>
 		</table>
 	</div>
 	<div id="manage_footer">
-		<button id="logout_button">Logout</button>
+		<form id="logout_button" action="logout.php">
+			<button id="logout_button">Logout</button>
+		</form>
 	</div>
 </body>
 </html>

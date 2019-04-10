@@ -15,9 +15,10 @@
 		window.onload = function(){
 			document.getElementById("create_ticket_button").onclick = function () {window.location.href='./create.php'};
 			document.getElementById("manage_technician_button").onclick = function () {window.location.href='./manage.php'};
+			document.getElementById("settings_button").onclick = function () {window.location.href='./settings.php'};
 		}
 		function goto_update_ticket(/*$ticketNum*/){
-      //$_SESSION["update_ticketNum"] = $ticketNum;
+		      //$_SESSION["update_ticketNum"] = $ticketNum;
 			window.location.href='./edit.php'
 		}
 	</script>
@@ -30,6 +31,7 @@
 	</div>
 	<div id="home_sidebar">
 		<button id="create_ticket_button">Create Ticket</button>
+		<button id="settings_button">Account Settings</button>
 		<?php
 			if($_SESSION["user_type"] == "Administrator"){
 				echo("<button id='manage_technician_button'>Manage Technicians</button>");
