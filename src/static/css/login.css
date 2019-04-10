@@ -54,5 +54,5 @@ input[type=submit]{
 div{
 	border-radius: 25px;
 	background-image: linear-gradient(lightsalmon, peachpuff);
-	padding-left: 120px;
+	padding: 20px;
 }
