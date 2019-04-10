@@ -9,29 +9,46 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 
      $sessionUser = filter_var($_POST["username"], 515);
      $sessionPass = filter_var($_POST["password"], 515);
+     
+     $hashPass = password_hash('$sessionPass', PASSWORD_BCRYPT);
+     echo $hashPass;
+     echo '<br>';
+     echo password_hash('$sessionPass', PASSWORD_BCRYPT);
+     /*
+     echo $hashPass;
+     echo '<br>';
+     //echo password_hash('password1', );  
+     if(password_verify('$sessionPass', $hashPass)){
+       echo "yes";
+     }else{
+       echo "NOOOOOOOO";
+      }  
+     
      $sessionID = (int)$sessionUser + time();
      $lastLogin = date('Y-m-d');
-     $retval;
- 
+     $retval
+ */
  
 //checks to see if user is in the database
-
-      $sessionSQL = "select * from Users where username = '$sessionUser' and password = '$sessionPass';";
+  
+      $sessionSQL = "select * from Users where username = '$sessionUser' and password ='$sessionPass';";
+      
       $retval = mysqli_query($CSDB, $sessionSQL);
-      
-      
       $rowArray = mysqli_fetch_assoc($retval);
-
+      
+      
       if($rowArray['role'] == 'Administrator'){
         $_SESSION['user_type'] = 'Administrator';
       }else if ($rowArray['role'] == 'Technician'){
         $_SESSION['user_type'] = 'Technician';
       }
       
+      
       //echo 'login successful';
       //redirect to home
-      header("Location: ./home.php");
-      exit;
+      //header("Location: ./home.php");
+      //exit;
+      
 }else{
   echo("You did not enter your credentials properly, redirecting to login...");
   header("refresh: 3; url= ./login.php");
