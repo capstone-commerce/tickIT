@@ -13,9 +13,9 @@
 	<link rel="stylesheet" type="text/css" href="./static/css/home.css">
 	<script>
 		window.onload = function(){
-			document.getElementById("create_ticket_button").onclick = function () {/*window.location.href='./create.php'*/ alert("Create Ticket Clicked");};
-			document.getElementById("manage_technician_button").onclick = function () {/*window.location.href='./manage.php'*/ alert("Create Ticket Clicked");};
-			document.getElementById("settings_button").onclick = function () {/*window.location.href='./settings.php'*/ alert("Create Ticket Clicked");};
+			document.getElementById("create_ticket_button").onclick = function () {window.location.href='./create.php';};
+			document.getElementById("manage_technician_button").onclick = function () {window.location.href='./manage.php';};
+			document.getElementById("settings_button").onclick = function () {window.location.href='./settings.php';};
 		}
 		function goto_update_ticket(/*$ticketNum*/){
 			//$_SESSION["update_ticketNum"] = $ticketNum;
