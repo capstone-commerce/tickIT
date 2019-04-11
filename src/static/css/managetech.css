@@ -7,19 +7,19 @@ html, body{
 table{
 	width: 75vw;
 }
-#manage_banner{
+#managetech_banner{
 	height: 5%;
 	width: 100%;	
 }
-#manage_sidebar{
+#managetech_sidebar{
 	float: left;
 	height: 100%;
 	width: 5%;
 }
-#manage_sidebar button{
+#managetech_sidebar button{
 	width: 100%;
 }
-#manage_main{
+#managetech_main{
 	position: absolute;
 	text-align: center;
 	top: 20vh;
@@ -42,8 +42,8 @@ table{
 	color: grey;
 	cursor: pointer;
 }
-#manage_footer{
-	margin-top: 80vh;
+#managetech_footer{
+	margin-top: 90vh;
 	height: 5%;
 	width: 100%;
 }
