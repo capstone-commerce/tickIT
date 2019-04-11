@@ -75,9 +75,11 @@
 				while($row = mysqli_fetch_assoc($Array)){
                				echo '<tr onclick="goto_update_ticket('.$row["ticket_number"].');">';
                				echo "<td>" . $row["ticket_number"] . "</td><td>" . $row["issue"] . "</td><td>" . $row["date_created"] . "</td><td>". $row["urgency"]."</td><td>". $row['username']."</td>";
+    
                				echo "</tr>";
            			}
           		}
+     mysqli_close($CSDB);
 		?>
 			</table>
 		</div>

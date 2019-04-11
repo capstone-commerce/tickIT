@@ -10,10 +10,12 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
      $sessionUser = filter_var($_POST["username"], 515);
      $sessionPass = filter_var($_POST["password"], 515);
      
+     //echo phpinfo();
+     
      $hashPass = password_hash('$sessionPass', PASSWORD_BCRYPT);
      echo $hashPass;
-     echo '<br>';
-     echo password_hash('$sessionPass', PASSWORD_BCRYPT);
+     //echo '<br>';
+     //echo password_hash('$sessionPass', PASSWORD_BCRYPT);
      /*
      echo $hashPass;
      echo '<br>';
@@ -31,7 +33,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
  
 //checks to see if user is in the database
   
-      $sessionSQL = "select * from Users where username = '$sessionUser' and password ='$sessionPass';";
+      $sessionSQL = "select * from Users where username = '$sessionUser' and password = '$sessionPass';";
       
       $retval = mysqli_query($CSDB, $sessionSQL);
       $rowArray = mysqli_fetch_assoc($retval);
@@ -54,5 +56,5 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
   header("refresh: 3; url= ./login.php");
   exit;
 }
-  
+  mysqli_close($CSDB);
 ?>
