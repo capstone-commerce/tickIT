@@ -16,6 +16,16 @@ body{
 	padding-bottom: 20%;
 	padding-left:110%;
 }
+input[type=password], select{
+	padding:12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-sizing: border-box;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
 input[type=text], select{
 	padding: 12px 20px;
 	margin: 8px 0;

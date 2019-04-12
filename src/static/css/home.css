@@ -2,8 +2,8 @@ html, body{
         height: 100%;
         max-width: 100%;
         overflow-x: hidden;
-        overflow-y: hidden;
-        background-image: linear-gradient(to bottom right, lightseagreen, lightblue);
+        overflow-y: scroll;
+        background-image: linear-gradient(lightblue, lightseagreen);
 }
 /*body{
         color: white;
@@ -22,17 +22,18 @@ table{
         width: 75vw;
 }
 #home_banner{
-        height: 5%;
+        height: 12%;
         width: 100%;
         text-align: center;
 	background-image: url("../img/banner.jpg");
+	font-size: 30px;
 }
 #home_sidebar{
         float: left;
         height: 100%;
         width: 10%;
 	padding-left: 50px;
-	padding-top: 50px;
+	padding-top: 30px;
 }
 #home_sidebar button{
         width: 100%;
@@ -123,4 +124,5 @@ table{
 }
 #logout_button{
         float: right;
+	padding-right: 200px;
 }
