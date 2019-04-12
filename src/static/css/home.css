@@ -26,6 +26,7 @@ table{
         width: 100%;
         text-align: center;
 	background-image: url("../img/banner.jpg");
+	font-size: 30px;
 }
 #home_sidebar{
         float: left;
