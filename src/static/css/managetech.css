@@ -28,17 +28,20 @@ table{
 #tech_table{
 	/*border: solid;*/
 }
-#tech_table_header{
-	text-align: left;
-}
-#tech_table_header tr:hover{
-	color: black;
-	cursor: default;
-}
 #tech_table tr{
 	outline: thin solid;
 }
 #tech_table tr:hover{
+	color: grey;
+	cursor: pointer;
+}
+#ticket_table{
+	/*border: solid;*/
+}
+#ticket_table tr{
+	outline: thin solid;
+}
+#ticket_table tr:hover{
 	color: grey;
 	cursor: pointer;
 }
