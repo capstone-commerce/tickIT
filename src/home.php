@@ -65,7 +65,8 @@
 				while($row = mysqli_fetch_assoc($Array)){
                				echo '<tronclick="goto_update_ticket('.$row["ticket_number"].');">';
                				echo "<td>" . $row["ticket_number"] . "</td><td>" . $row["issue"] . "</td><td>" . $row["date_created"] . "</td><td>" . $row["urgency"] . "</td>";
-               				//echo "<td><form method='POST' action='edit.php'><input type='submit' value='Edit'
+               				echo "<td><form method='post' action='edit.php'><input type='hidden' value=".$row["ticket_number"]." name='ticketNum'>";
+                      echo "<input type='submit' id='ticketInfo' value='Edit'></form></td>";
                				echo "</tr>";
             			}
           		}else if($_SESSION["user_type"] == "Administrator"){
@@ -75,7 +76,9 @@
 				while($row = mysqli_fetch_assoc($Array)){
                				echo '<tr onclick="goto_update_ticket('.$row["ticket_number"].');">';
                				echo "<td>" . $row["ticket_number"] . "</td><td>" . $row["issue"] . "</td><td>" . $row["date_created"] . "</td><td>". $row["urgency"]."</td><td>". $row['username']."</td>";
-    
+                      
+                      echo "<td><form method='post' action='edit.php'><input type='hidden' value=".$row["ticket_number"]." name='ticketNum'>";
+                      echo "<input type='submit' id='ticketInfo' value='Edit'></form></td>";
                				echo "</tr>";
            			}
           		}
