@@ -12,8 +12,8 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
      
      //echo phpinfo();
      
-     $hashPass = password_hash('$sessionPass', PASSWORD_BCRYPT);
-     echo $hashPass;
+     //$hashPass = password_hash('$sessionPass', PASSWORD_BCRYPT);
+     //echo $hashPass;
      //echo '<br>';
      //echo password_hash('$sessionPass', PASSWORD_BCRYPT);
      /*
@@ -48,8 +48,8 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
       
       //echo 'login successful';
       //redirect to home
-      //header("Location: ./home.php");
-      //exit;
+      header("Location: ./home.php");
+      exit;
       
 }else{
   echo("You did not enter your credentials properly, redirecting to login...");

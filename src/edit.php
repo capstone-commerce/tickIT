@@ -45,18 +45,33 @@
 		<h1>Description of Ticket</h1>
 
 		<div id="ticket_info">
-
-			<b>ticket info</b>
-      <table id = "ticket info table">
-        <tr>
-          <th>Ticket Number</th>
-          <th>Date Created</th>
-        </tr>
-        <tr>
-          <th>Customer Name</th>
-          <th>Customer Email</th>
-        </tr>
-      </table>
+    <?php
+      require("dbconnect.php");
+      $ticket_number = $_POST["ticketNum"];
+      $infoQuery = "select * from Tickets where ticket_number='$ticket_number';";
+      $ticketInfo = mysqli_query($CSDB, $infoQuery);
+      $updateArray = mysqli_fetch_assoc($ticketInfo);
+			echo "<b>ticket info</b>";
+      echo "<table id = 'ticket info table' width='1000'>";
+        echo "<tr>";
+          echo "<th>Ticket Number</th>";
+          echo "<th>Date Created</th>";
+        echo "</tr>";
+        echo "<tr>";
+          echo "<td>".$updateArray["ticket_number"]."</td>";
+          echo "<td>".$updateArray["date_created"]."</td>";
+        echo "</tr>";
+        echo "<tr>";
+          echo "<th>Customer Name</th>";
+          echo "<th>Customer Email</th>";
+        echo "</tr>";
+        echo "<tr>";
+          echo "<td>".$updateArray["customer_name"]."</td>";
+          echo "<td>".$updateArray["customer_email"]."</td>";
+        echo "</tr>";
+      echo "</table>";
+      mysli_close($CSDB);
+     ?>
 
 		</div>
 

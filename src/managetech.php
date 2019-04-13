@@ -1,4 +1,4 @@
-<?php session_start();
+<?php session_start(); require('dbconnect.php');
 	//checking if user was authenticated by checking if they have a usertype
 	if(!isset($_SESSION["user_type"])){
 		echo("user_type is NOT set");
@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?php echo("[TECHNICIAN ACCOUNT NAME]"); ?> | tickIT</title>
+	<title><?php echo($_POST['username']); ?> | tickIT</title>
 	<link rel="stylesheet" type="text/css" href="./static/css/managetech.css">
 	<script>
 		window.onload = function(){
@@ -23,14 +23,36 @@
 	</script>
 </head>
 <body>
+	<?php
+		$username = $_POST['username'];
+		$queueQuery = "select email, phone_number, department, role, locked from Users where username = '$username'";
+		$Array = mysqli_query($CSDB, $queueQuery);
+	?>
 	<div id="managetech_banner">
-		<h2>Manage Technicians</h2>
+		<h2><?php echo($_POST['username']); ?></h2>
 		<button id="home_button">Home</button>
+		<?php
+			echo("<form action='delete_user.php' method='post'>" . 
+				"<input type='hidden' name='username_to_del' value=" . $username . ">" . 
+				"<input type='submit' value='Delete User'>" . 
+			"</form>");
+		?>
 	</div>
 	<div id="managetech_main">
 		<table id="tech_table">
-			<tr id="tech_table_header"><td><h3><?php echo("TECHNICIAN"); ?></h3></td></tr>
-
+			<th>User<td>Email</td><td>Phone</td><td>Department</td><td>Role</td><td>Locked Status</td></th>
+			<?php
+				while($row = mysqli_fetch_assoc($Array)){
+					echo("<tr><td>" . $username . " " . "</td><td>" . $row["email"] . " " 
+					. "</td><td>" . $row["phone_number"] . " " . "</td><td>" . $row["department"] . " " 
+					 . "</td><td>" . $row["role"] . " " . "</td><td>" . "Locked: " . $row["locked"] . "</td></tr>");
+				}
+			?>
+		</table>
+		<br><br>
+		<table id="ticket_table">
+			<th>THIS WILL BE THE TICKET HISTORY TABLE FOR <?php echo($username); ?></th>
+			<tr><td>ticket 1</td></tr>
 		</table>
 	</div>
 	<div id="managetech_footer">

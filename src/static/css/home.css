@@ -2,7 +2,7 @@ html, body{
         height: 100%;
         max-width: 100%;
         overflow-x: hidden;
-        overflow-y: scroll;
+        overflow-y: hidden;
         background-image: linear-gradient(lightblue, lightseagreen);
 }
 /*body{
