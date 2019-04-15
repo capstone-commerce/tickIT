@@ -1,30 +1,45 @@
 html, body{
-	height: 100%;
-	max-width: 100%;
-	overflow-x: hidden;
-	overflow-y: hidden;
+        height: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        background-image: linear-gradient(lightseagreen, lightblue);
 }
-
+#home_banner{
+        height: 12%;
+        width: 100%;
+        text-align: center;
+        background-image: url("../img/banner.jpg");
+}
 #edit_main{
-	position: absolute;
-	text-align: center;
-	left: 15vw;
-	width: 70vw;
-/*	margin-top: 10vh;*/
+        position: absolute;
+        text-align: center;
+        left: 15vw;
+        width: 70vw;
+/*      margin-top: 10vh;*/
 }
 
 #ticket_info{
-	border: solid;
-	height: 40vh;
+        border: solid;
+        height: 40vh;
+        background-image: linear-gradient(lightsalmon, peachpuff);
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-shadow: 10px 10px 5px steelblue;
 }
-
+#ticket_info th, td{
+        padding: 5px;
+}
+#ticket_info tr{
+        border-bottom: 1px solid #ddd;
+}
 #table_of_updates{
-	border: solid;
-	height: 40vh;
+        border: solid;
+        height: 40vh;
 }
 
 #edit_footer{
-	margin-top: 90vh;
-	margin-right: 10vw;
-	float:right;
+        margin-top: 90vh;
+        margin-right: 10vw;
+        float:right;
 }
