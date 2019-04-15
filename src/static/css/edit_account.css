@@ -1,52 +1,98 @@
 html, body{
-	height: 100%;
-	max-width: 100%;
-	overflow-x: hidden;
-	overflow-y: hidden;
+        height: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        background-image: linear-gradient(lightseagreen, lightblue);
 }
 table{
-	width: 75vw;
+        width: 75vw;
+}
+#home_button{
+        background-color: limegreen;
+        padding: 4px 10px;
+        margin: 4px 0;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
 }
 #edit_account_banner{
-	height: 5%;
-	width: 100%;	
+        height:12%;
+        width: 100%;
+        background-image: url("../img/banner.jpg");
 }
 #edit_account_sidebar{
-	float: left;
-	height: 100%;
-	width: 5%;
+        float: left;
+        height: 100%;
+        width: 5%;
 }
 #edit_account_sidebar button{
-	width: 100%;
+        width: 100%;
+        border-radius: 14px;
+        cursor: pointer;
+        padding: 12px 80px;
+        background-image: linear-gradient(to bottom right, limegreen, palegreen);
+        box-shadow: 10px 10px 5px steelblue;
+        margin: 2px 0;
+        border: 1px solid #ccc;
 }
 #edit_account_main{
-	position: absolute;
-	text-align: center;
-	top: 20vh;
-	left: 6vw;
+        position: absolute;
+        text-align: center;
+        top: 20vh;
+        left: 6vw;
+        background-image: linear-gradient(lightsalmon, peachpuff);
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-shadow: 10px 10px 5px steelblue;
 }
 #tech_table{
-	/*border: solid;*/
+        /*border: solid;*/
 }
 #tech_table_header{
-	text-align: left;
+        text-align: left;
 }
 #tech_table_header tr:hover{
-	color: black;
-	cursor: default;
+        color: black;
+        cursor: default;
 }
 #tech_table tr{
-	outline: thin solid;
+        outline: thin solid;
 }
 #tech_table tr:hover{
-	color: grey;
-	cursor: pointer;
+        color: grey;
+        cursor: pointer;
 }
 #edit_account_footer{
-	margin-top: 80vh;
-	height: 5%;
-	width: 100%;
+        margin-top: 80vh
+        height: 5%;
+        width: 100%;
 }
 #logout_button{
-	float: right;
+        float: right;
+        background-color: limegreen;
+        padding: 4px 10px;
+        /*margin: 4px 0;*/
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
 }
+input[type=text], select{
+        padding:12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+        opacity: 0.8;
+        filter: alpha(opacity=80);
+}
+input[type=submit]{
+        background-image: linear-gradient(to bottom right, limegreen, palegreen);
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+}
+
