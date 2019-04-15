@@ -52,7 +52,7 @@ input[type=submit]{
         margin-left: auto;
         margin-right: auto;
         width: 50%;
-     text-align: center;
+        text-align: center;
         margin-top: 30vh;
         height: 307px;
         width: 446px;
@@ -65,6 +65,4 @@ div{
         background-image: linear-gradient(lightsalmon, peachpuff);
         padding: 20px;
 }
-
-
 
