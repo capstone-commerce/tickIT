@@ -52,7 +52,7 @@ html, body{
         cursor: pointer;
 }
 #create_table{
-  /*margin-left: 50%;
+       /*margin-left: 50%;
         margin-right: 50%;*/
 }
 input[type=text], select{
@@ -96,7 +96,6 @@ textarea{
         cursor: pointer;
 }
 input[type=submit]{
-        color: white;
         background-color: limegreen;
         padding: 14px 20px;
         margin: 8px 0;
