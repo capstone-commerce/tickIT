@@ -5,19 +5,6 @@ html, body{
         overflow-y: hidden;
         background-image: linear-gradient(lightblue, lightseagreen);
 }
-/*body{
-        color: white;
-        background-image: linear-gradient(lightseagreen, lightblue);
-        transform: translate(-50%, -50%);
-        position: absolute;
-        text-align: center;
-        top: 25%;
-        left: 50%;
-        padding-top:50%;
-        padding-right: 50%;
-        padding-bottom: 20%;
-        padding-left:110%;
-}*/
 table{
         width: 75vw;
 }
@@ -26,7 +13,7 @@ table{
         width: 100%;
         text-align: center;
         background-image: url("../img/banner.jpg");
-   font-size: 30px;
+        font-size: 30px;
 }
 #home_sidebar{
         float: left;
@@ -78,7 +65,7 @@ table{
         appearance: none;
         width: 25px;
         height: 25px;
-     border-radius: 50%;
+        border-radius: 50%;
         background: #696969;
         cursor: pointer;
 }
@@ -127,10 +114,9 @@ table{
         padding-right: 200px;
 }
 input[type=submit], search{
-        color: white;
         background-color: limegreen;
         padding: 4px 10px;
-  	margin: 4px 0;
+        margin: 4px 0;
         border: none;
         border-radius: 8px;
         cursor: pointer;
@@ -145,5 +131,3 @@ input[type=text], select{
         opacity: 0.8;
         filter: alpha(opacity=80);
 }
-
-
