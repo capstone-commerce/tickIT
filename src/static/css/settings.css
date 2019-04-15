@@ -1,58 +1,78 @@
 html, body{
-	height: 100%;
-	max-width: 100%;
-	overflow-x: hidden;
-	overflow-y: hidden;
-	background-image: linear-gradient(lightseagreen, lightblue);
+        height: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        background-image: linear-gradient(lightseagreen, lightblue);
 }
-/*body{
-	color: white;
-	background-image: linear-gradient(lightseagreen, lightblue);
-	transform: translate(-50%, -50%);
-	position: absolute;
-	text-align: center;
-	top: 25%;
-	left: 50%;
-	padding-top:50%;
-	padding-right: 50%;
-	padding-bottom: 20%;
-	padding-left:110%;
-}*/
 table{
-	width: 75vw;
+        width: 75vw;
+        border-collapse: collapse;
 }
 #settings_banner{
-	height: 5%;
-	width: 100%;	
-	text-align: center;
+        height: 12%;
+        width: 100%;
+        text-align: center;
+        background-image: url("../img/banner.jpg");
 }
 #settings_sidebar{
-	float: left;
-	height: 100%;
-	width: 5%;
+        float: left;
+        height: 100%;
+        width: 5%;
 }
 #settings_sidebar button{
-	width: 100%;
-	border-radius: 14px;
-	cursor: pointer;
-	padding: 12px 80px;
-	background-image: linear-gradient(to bottom right, limegreen, palegreen);
-	box-shadow: 10px 10px 5px steelblue;
-	margin: 2px 0;
-	border: 1px solid #ccc;
+        width: 100%;
+        border-radius: 14px;
+        cursor: pointer;
+        padding: 12px 80px;
+        background-image: linear-gradient(to bottom right, limegreen, palegreen);
+        margin: 2px 0;
+        border: 1px solid #ccc;
 }
 
 #settings_main{
-	position: absolute;
-	text-align: center;
-	top: 20vh;
-	left: 6vw;
+        position: absolute;
+        text-align: center;
+        top: 25vh;
+        left: 6vw;
+        height: 60vh;
+        float: left;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        background-color: lightsalmon;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-shadow: 10px 10px 5px steelblue;
+}
+#settings_main  th, td{
+        padding: 5px;
+}
+#settings_main tr{
+        border-bottom: 1px solid #ddd;
+}
+#settings_main tr:nth-child(even){
+        background-color: #FFDEAD;
 }
 #settings_footer{
-	margin-top: 90vh;
-	height: 5%;
-	width: 100%;
+        margin-top: 90vh;
+        height: 5%;
+        width: 100%;
 }
-#logout_button{
-	float: right;
+input[type=submit], logout{
+        float: right;
+        background-image: linear-gradient(to bottom right, limegreen, palegreen);
+        padding: 12px 80px;
+        margin: 2px 0;
+        border: 1px solid #ccc;
+        border-radius: 14px;
+        cursor: pointer;
 }
+#edit_account_button{
+        background-image: linear-gradient(to bottom right, limegreen, palegreen);
+        padding: 4px 10px;
+        margin: 4px 0;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+}
+
