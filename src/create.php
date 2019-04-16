@@ -1,10 +1,12 @@
 <?php session_start();
+	
 	//checking if user was authenticated by checking if they have a usertype
 	if(!isset($_SESSION["user_type"])){
 		echo("user_type is NOT set");
 		header("Location: ./login.php");
 		exit();
 	}
+	
 ?>
 <?php
 	require('dbconnect.php');
@@ -60,14 +62,14 @@
 			<div id="create_table">
 				<table>
 					<tr>
-						<td><input type="text" name="name" value=""> <br> Customer Name</td>
-						<td><input type="text" name="email" value=""> <br> Customer Email</td>
+						<td><input type="text" name="c_name" value=""> <br> Customer Name</td>
+						<td><input type="text" name="c_email" value=""> <br> Customer Email</td>
 						<td><input type="text" name="description" value=""> <br> Brief Description</td>
 					</tr>
 					<tr>
-						<td><input type="text" name="technician" value=""> <br> Assigned Technician</td>
+						<td><input type="text" name="t_name" value=""> <br> Assigned Technician</td>
 						<td><input type="range" min="1" max="5" value="3" class="slider" id="priority_range"> <br> Priority <span id="demo"></span></td>
-						<td><textarea name="notes" rows="10" cols="50"></textarea></td>
+                        <td><br> NOTES: <textarea name="notes" rows="10" cols="50" maxlength="150"></textarea></td>
 					</tr>
 				</table>
 			</div>
@@ -80,6 +82,7 @@
     slider.oninput = function() {
         output.innerHTML = this.value;
     }
+}
     </script>
 			
 				<input type="submit">
