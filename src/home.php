@@ -14,8 +14,11 @@
 	<script>
 		window.onload = function(){
 			document.getElementById("create_ticket_button").onclick = function () {window.location.href='./create.php';};
-			document.getElementById("manage_technician_button").onclick = function () {window.location.href='./manage.php';};
+			//document.getElementById("manage_technician_button").onclick = function () {window.location.href='./manage.php';};
 			document.getElementById("settings_button").onclick = function () {window.location.href='./settings.php';};
+		}
+		function goto_manage(){
+			window.location.href='./manage.php';
 		}
 		function goto_update_ticket(/*$ticketNum*/){
 			//$_SESSION["update_ticketNum"] = $ticketNum;
@@ -35,7 +38,7 @@
 		<button id="settings_button">Account Settings</button>
 		<?php
 			if($_SESSION["user_type"] == "Administrator"){
-				echo("<button id='manage_technician_button'>Manage Technicians</button>");
+				echo("<button onclick='goto_manage()' id='manage_technician_button'>Manage Technicians</button>");
 			}
 		?>
 	</div>
@@ -47,13 +50,22 @@
 			<tr><td><input type="text" name="ticket_table_search" value=""></td></tr>
 			<tr><td><input type="submit" name="ticket_table_search_submit" value="Search"></td></tr>
 		</table>
+   <!--/*
+   <?php
+     if($_SESSSION["user_type"] == "Technician"){
+       echo '<h2>Tickets in your queue</h2>';
+     }else if($_SESSION["user_type"] == "Administrator"){
+       echo '<h2>Tickets in global queue</h2>';
+     }
+   ?>
+   */-->
 		<div id="ticket_table_div">
 			<table id="ticket_table">
 				<tr>
 					<th>Ticket ID</th>
 					<th>Description</th>
-				        <th>Date Created</th>
-          				<th>Urgency</th>
+          <th>Date Created</th>
+ 				  <th>Urgency</th>
 		<?php
           		require("dbconnect.php");
 			//pull info from DB and populate home's table
@@ -65,7 +77,8 @@
 				while($row = mysqli_fetch_assoc($Array)){
                				echo '<tronclick="goto_update_ticket('.$row["ticket_number"].');">';
                				echo "<td>" . $row["ticket_number"] . "</td><td>" . $row["issue"] . "</td><td>" . $row["date_created"] . "</td><td>" . $row["urgency"] . "</td>";
-               				//echo "<td><form method='POST' action='edit.php'><input type='submit' value='Edit'
+               				echo "<td><form method='post' action='edit.php'><input type='hidden' value=".$row["ticket_number"]." name='ticketNum'>";
+                      echo "<input type='submit' id='ticketInfo' value='Edit'></form></td>";
                				echo "</tr>";
             			}
           		}else if($_SESSION["user_type"] == "Administrator"){
@@ -75,7 +88,9 @@
 				while($row = mysqli_fetch_assoc($Array)){
                				echo '<tr onclick="goto_update_ticket('.$row["ticket_number"].');">';
                				echo "<td>" . $row["ticket_number"] . "</td><td>" . $row["issue"] . "</td><td>" . $row["date_created"] . "</td><td>". $row["urgency"]."</td><td>". $row['username']."</td>";
-    
+                      
+                      echo "<td><form method='post' action='edit.php'><input type='hidden' value=".$row["ticket_number"]." name='ticketNum'>";
+                      echo "<input type='submit' id='ticketInfo' value='Edit'></form></td>";
                				echo "</tr>";
            			}
           		}

@@ -85,6 +85,8 @@
 				<input type="submit">
 		</form>
 	</div>
+	<div id="home_banner">
+	</div>
 	<div id="create_footer">
 		<button id="home_button">Home</button>
 	</div>

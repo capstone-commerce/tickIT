@@ -30,7 +30,6 @@
 		<button id="create_tech_button">Create Account</button>
 	</div>
 	<div id="manage_main">
-TODO: Click technician name, go to their managetech.php page
 		<table id="tech_table">
 			<tr><td><h3>Users</h3></td><td><h3>Role</h3></td></tr>
 			<?php
@@ -44,7 +43,10 @@ TODO: Click technician name, go to their managetech.php page
 				$queueQuery = "select username, role from Users where role='Technician'";
 				$Array = mysqli_query($CSDB, $queueQuery);
 				while($row = mysqli_fetch_assoc($Array)){
-					echo("<tr><td>" . $row["username"] . "</td><td>" . $row["role"] . "</td></tr>");
+					echo("<form action='managetech.php' method='post' <tr><td>" 
+					. $row["username"] . "</td><td>" . $row["role"] . "</td><td>"
+					. "<input type='hidden' value=" . $row["username"] . " name='username'/>"
+					. "<input type='submit' id='manage_tech_button' value='Manage'/></td></tr> </form>");
 				}
 			?>
 		</table>
