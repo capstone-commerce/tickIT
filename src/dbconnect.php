@@ -1,15 +1,11 @@
 <?php
-
-
- $servername = "localhost";  // if you run on local server the name is "localhost:3306". If you run on cs server, use only "localhost"
+//	include("authenticate_session.php");
+$servername = "localhost";  // if you run on local server the name is "localhost:3306". If you run on cs server, use only "localhost"
 $username = "root";
 $password = "tickitpassword_1";
 $dbname = "tickIT_DB";
 $CSDB;
 
-
-
- 
 $CSDB = @new mysqli($servername, $username, $password, $dbname);
 /*
 try {

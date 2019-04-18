@@ -1,10 +1,6 @@
 <?php session_start();
-	//checking if user was authenticated by checking if they have a usertype
-	if(!isset($_SESSION["user_type"])){
-		echo("user_type is NOT set");
-		header("Location: ./login.php");
-		exit();
-	}
+	require("dbconnect.php");
+	include("authenticate_session.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,8 +25,13 @@
 </head>
 <body>
 	<div id="home_banner">
+	</div>
+	<div>
 		<?php
-			echo("Greetings " . $_SESSION["username"]);
+			$username = $_SESSION['username'];
+			$time_query = mysqli_query($CSDB, "SELECT last_login FROM Users WHERE username='$username'");
+			$row = mysqli_fetch_assoc($time_query);
+			echo($_SESSION["user_type"] . " " . $_SESSION["username"] . ". Your last login was: " . $row["last_login"]);
 		?>
 	</div>
 	<div id="home_sidebar">
@@ -67,7 +68,6 @@
           <th>Date Created</th>
  				  <th>Urgency</th>
 		<?php
-          		require("dbconnect.php");
 			//pull info from DB and populate home's table
         		if($_SESSION["user_type"] == "Technician"){
             			echo "</tr>";

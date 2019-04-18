@@ -1,10 +1,7 @@
-<?php session_start(); require('dbconnect.php');
-	//checking if user was authenticated by checking if they have a usertype
-	if(!isset($_SESSION["user_type"])){
-		echo("user_type is NOT set");
-		header("Location: ./login.php");
-		exit();
-	}
+<?php
+	session_start();
+	require('dbconnect.php');
+	include("authenticate_session.php");
 ?>
 <!DOCTYPE html>
 <html>

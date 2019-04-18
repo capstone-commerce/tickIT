@@ -1,10 +1,5 @@
 <?php session_start(); require('dbconnect.php');
-	//checking if user was authenticated by checking if they have a usertype
-	if(!isset($_SESSION["user_type"])){
-		echo("user_type is NOT set");
-		header("Location: ./login.php");
-		exit();
-	}
+	include("authenticate_session.php");
 	//redirects to home if the user's type is not admin
 	if($_SESSION["user_type"] != "Administrator"){
 		header("Location: ./home.php");
@@ -25,7 +20,7 @@
 <body>
 	<?php
 		$username = $_POST['username'];
-		$queueQuery = "select email, phone_number, department, role, locked from Users where username = '$username'";
+		$queueQuery = "select email, phone_number, department, role, locked, last_login from Users where username = '$username'";
 		$Array = mysqli_query($CSDB, $queueQuery);
 	?>
 	<div id="managetech_banner">
@@ -40,12 +35,13 @@
 	</div>
 	<div id="managetech_main">
 		<table id="tech_table">
-			<th>User<td>Email</td><td>Phone</td><td>Department</td><td>Role</td><td>Locked Status</td></th>
+			<th>User<td>Email</td><td>Phone</td><td>Department</td><td>Role</td><td>Locked Status</td><td>Last Login</td></th>
 			<?php
 				while($row = mysqli_fetch_assoc($Array)){
 					echo("<tr><td>" . $username . " " . "</td><td>" . $row["email"] . " " 
 					. "</td><td>" . $row["phone_number"] . " " . "</td><td>" . $row["department"] . " " 
-					 . "</td><td>" . $row["role"] . " " . "</td><td>" . "Locked: " . $row["locked"] . "</td></tr>");
+					. "</td><td>" . $row["role"] . " " . "</td><td>" . "Locked: " . $row["locked"] . " " 
+					. "</td><td>" . $row["last_login"] . "</td></tr>");
 				}
 			?>
 		</table>

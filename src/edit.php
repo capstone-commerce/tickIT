@@ -1,17 +1,5 @@
 <?php session_start();
-	//checking if user was authenticated by checking if they have a usertype
-	if(!isset($_SESSION["user_type"])){
-
-		echo("user_type is NOT set");
-
-		header("Location: ./login.php");
-
-		exit();
-
-	}
-
-	
-
+	include("authenticate_session.php");
 ?>
 
 <!DOCTYPE html>
@@ -29,9 +17,9 @@
 		window.onload = function(){
       document.getElementById("home_button").onclick = function () {window.location.href='./home.php'};
 
-			document.getElementById("logout_button").onclick = function () {window.location.href='./login.php'};
+			//document.getElementById("logout_button").onclick = function () {window.location.href='./logout.php'};
 
-			document.getElementById("submit_ticket_button").onclick = function () {window.location.href='./home.php'};
+			document.getElementById("submit_ticket_button").onclick = function () {window.location.href='./transaction.php'};
 
 		}
 
@@ -46,6 +34,7 @@
 	</div>
  <div id="settings_sidebar">
 		<button id="home_button">Home</button>
+    <button id="submit_ticket_button">Close Ticket</button>
 	</div>
 	<div id="edit_main">
 
@@ -55,11 +44,12 @@
     <?php
       require("dbconnect.php");
       $ticket_number = $_POST["ticketNum"];
+      $_SESSION["ticketNum"] = $ticket_number;
       $infoQuery = "select * from Tickets where ticket_number='$ticket_number';";
       $ticketInfo = mysqli_query($CSDB, $infoQuery);
       $updateArray = mysqli_fetch_assoc($ticketInfo);
-			echo "<b>ticket info</b>";
-      echo "<table id = 'ticket info table' width='1000'>";
+			echo "<b>| Ticket info |</b>";
+      echo "<table id = 'ticket info table' width='800'>";
         echo "<tr>";
           echo "<th>Ticket Number</th>";
           echo "<th>Date Created</th>";
@@ -117,16 +107,17 @@
 
 		<div id="ticket_info">
     <?php
-			echo "<b>table of updates</b>";
+			echo "<b>| Table of updates |</b>";
       echo "<form method='post' action='update.php'>";
-      echo "<table width='1000'>";
+      echo "<table width='800'>";
         echo "<tr>";
           echo "<th>Edit Issue</th>";
           echo "<th>Change Urgency level</th>";
         echo "</tr>";
         echo "<tr>";
-          echo "<td><input type='text' id='editIssue'></td>";
-          echo "<td><input type='range' min='1' max='9' value='5' class='slider' id='editUrgency'></td>";
+          echo "<td><textarea rows='5' cols='40' name='editIssue'></textarea></td>";
+          echo "<td><input type='range' min='1' max='9' value=".$updateArray["urgency"]." id='priority_range' name='editUrgency'>";
+               echo "<br>Priority <span id = 'demo'></span></td>";
         echo "</tr>";
         echo "<tr>";
           echo "<th>Notes</th>";
@@ -135,30 +126,30 @@
           }
         echo "</tr>";
         echo "<tr>";
-          echo "<td><textarea name='editNotes' rows='10' cols='50></textarea></td>";
+          echo "<td><textarea rows='5' cols='40' name='editNotes'></textarea></td>";
           if($_SESSION["user_type"] == "Administrator"){
-            echo "<td><input type='text' id='editAssignee'></td>";
+            echo "<td><input type='text' name='editAssignee'></td>";
           }
         echo "</tr>";
         echo "<tr>";
-          echo "<td><input type ='submit' value='submit' id='submitEdit'></td>";
+          echo "<td><input type ='submit' value='Update' name='submitEdit'></td>";
         echo "</tr>";
       echo "</table></form>";
       
     ?>
 		</div>
+   <script>
+	    			var slider = document.getElementById("priority_range");
+	    			var output = document.getElementById("demo");
+	    			output.innerHTML = slider.value;
+	    			slider.oninput = function() {
+	        			output.innerHTML = this.value;
+	    			}
+    			</script>
    
 
 	</div>
 
-	<div id="edit_footer">
-
-		<form id="logout_button" action="logout.php">
-
-			<input type="submit" name="logout" value="logout"/>
-
-		</form>
-	</div>
 
 </body>
 

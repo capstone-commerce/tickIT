@@ -15,10 +15,20 @@ table{
 	text-align: center;
 	background-image: url("../img/banner.jpg");
 }
+table{
+        width: 75vw;
+        border-collapse: collapse;
+}
+#settings_banner{
+        height: 12%;
+        width: 100%;
+        text-align: center;
+        background-image: url("../img/banner.jpg");
+}
 #settings_sidebar{
-	float: left;
-	height: 100%;
-	width: 5%;
+        float: left;
+        height: 100%;
+        width: 5%;
 }
 #settings_sidebar button{
 	padding: 12px 20px;
@@ -54,21 +64,31 @@ table{
 }
 #settings_main tr:nth-child(even){
 	background-color: #FFDEAD;
+        padding: 5px;
 }
-#settings_footer{
-	margin-top: 90vh;
-	height: 5%;
-	width: 100%;
+#home_footer{
+        margin-top: 75vh;
+        height: 5%;
+        width: 100%;
 }
 input[type=submit], logout{
-	float: right;
-	background-image: linear-gradient(to bottom right, limegreen, palegreen);
-	padding: 12px 80px;
-	margin: 2px 0;
-	border: 1px solid #ccc;
-	border-radius: 14px;
-	cursor: pointer;
+        float: right;
+        background-image: linear-gradient(to bottom right, limegreen, palegreen);
+        padding: 12px 80px;
+        margin: 2px 0;
+        border: 1px solid #ccc;
+        border-radius: 14px;
+        cursor: pointer;
 }
+/*#logout_button{
+	float: right;
+        background-image: linear-gradient(to bottom right, limegreen, palegreen);
+        padding: 12px 80px;
+        margin: 2px 0;
+        border: 1px solid #ccc;
+        border-radius: 14px;
+        cursor: pointer;
+}*/
 #edit_account_button{
 	background-image: linear-gradient(to bottom right, limegreen, palegreen);
 	padding: 4px 10px;
