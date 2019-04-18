@@ -14,11 +14,11 @@
 	<div id="login_input">
 		<?php
 			$login_username = $_POST['username'];
-			$time_query = mysqli_query($CSDB, "SELECT last_login FROM Users WHERE username='$login_username'");
+			$time_query = mysqli_query($CSDB, "SELECT last_login, failed_logins FROM Users WHERE username='$login_username'");
 			$row = mysqli_fetch_assoc($time_query);
 			echo("<span>" . "$login_username" . "</span>" . "<br>");
 			echo("Your last successful login was at: " . $row["last_login"] . "<br>");
-			echo("Failed logins since last login: [NUMBER HERE]");
+			echo("Failed logins since last login: " . $row["failed_logins"]);
 		?>
 		<form action="authenticate.php" method="post">
 			<!-- Username<input type="text" name="username" value="" id="username"> <br> -->

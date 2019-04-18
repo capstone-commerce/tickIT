@@ -1,23 +1,29 @@
 <?php
 	session_start();
+	require("dbconnect.php");
 	include("authenticate_session.php");
 	include("email_config.php");
 
 switch($_SESSION['message_type']){
-	case "created_ticket":
-		$email = $_POST['email'];
-		$name = $_POST['name'];
-		$subject = $_POST['subject'];
-		$body = "Greetings " . $_POST['name'] . ", " . 
+	case "ticket_created":
+		$email = $_SESSION['email'];
+		$name = $_SESSION['customer_name'];
+		$subject = $_SESSION['subject'];
+		$body = "Greetings " . $name . ", " . 
 			"<br><br>" . 
-			"Our department has received your work order for [" . $_POST['subject'] . 
+			"Our department has received your work order for [" . $subject . 
 			"] and is currently working to resolve your issue.<br>" . 
-			"Your assigned technician is " . $_POST['technician'] . "." . 
+			"Your assigned technician is " . $_SESSION['username'] . "." . 
 			"<br><br>Please let us know if we can do anything to further assist you!" . 
 			"<br>Best,<br>tickIT Email Bot :)";
 		break;
 	case "account_edited":
-		$email = "iwhitese@kent.edu";
+		$username = $_SESSION['username'];
+		$email_query = "SELECT email FROM Users WHERE username='$username'";
+		$email_retval = mysqli_query($CSDB, $email_query);
+		$row = mysqli_fetch_assoc($email_retval);
+
+		$email = $row["email"];
 		$name = $_SESSION['username'];
 		$subject = "Account Information Changed";
 		$body = "Greetings " . $_SESSION['username'] . ", " . 
@@ -35,11 +41,14 @@ $mail->AltBody = 'ERROR: altbody message sent.';
 //$mail->addAttachment('images/phpmailer_mini.png');
 //send the message, check for errors
 unset($_SESSION['message_type']);
+unset($_SESSION['email']);
+unset($_SESSION['customer_name']);
+unset($_SESSION['subject']);
 if (!$mail->send()) {
 	echo "Mailer Error: " . $mail->ErrorInfo;
 	//header("refresh: 5; url=./create.php");
 } else {
-	echo "Success! Redirecting to home...";
+	//echo "Success! Redirecting to home...";
 	header("Location: ./home.php");
 	exit;
 }
