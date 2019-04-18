@@ -29,9 +29,7 @@
 	<div>
 		<?php
 			$username = $_SESSION['username'];
-			$time_query = mysqli_query($CSDB, "SELECT last_login FROM Users WHERE username='$username'");
-			$row = mysqli_fetch_assoc($time_query);
-			echo($_SESSION["user_type"] . " " . $_SESSION["username"] . ". Your last login was: " . $row["last_login"]);
+			echo($_SESSION["user_type"] . " " . $_SESSION["username"]);
 		?>
 	</div>
 	<div id="home_sidebar">

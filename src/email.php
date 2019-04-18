@@ -16,7 +16,7 @@ switch($_SESSION['message_type']){
 			"<br><br>Please let us know if we can do anything to further assist you!" . 
 			"<br>Best,<br>tickIT Email Bot :)";
 		break;
-	case "editted_account":
+	case "account_edited":
 		$email = "iwhitese@kent.edu";
 		$name = $_SESSION['username'];
 		$subject = "Account Information Changed";
@@ -34,15 +34,12 @@ $mail->AltBody = 'ERROR: altbody message sent.';
 //Attach an image file
 //$mail->addAttachment('images/phpmailer_mini.png');
 //send the message, check for errors
+unset($_SESSION['message_type']);
 if (!$mail->send()) {
 	echo "Mailer Error: " . $mail->ErrorInfo;
 	//header("refresh: 5; url=./create.php");
 } else {
-/*	echo "Email sent to " . $_POST["name"] . "<br>" . 
-	" at email address " . $_POST["email"] . "<br>" . 
-	"Redirecting to home...";
-*/
-	//redirects page to home.html after 3 seconds
+	echo "Success! Redirecting to home...";
 	header("Location: ./home.php");
 	exit;
 }

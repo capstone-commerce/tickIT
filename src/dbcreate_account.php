@@ -42,10 +42,9 @@
 			die('Could not enter data: ' . mysqli_error($CSDB));
 		} else {
 			echo "Account Edited! Redirecting to home...";
-			$_SESSION['message_type'] = "account_editted";
+			$_SESSION['message_type'] = "account_edited";
 			header("refresh: 2; url=./email.php");
 		}
 	}
-
 	mysqli_close($CSDB);
 ?>
