@@ -1,9 +1,17 @@
-html, body{
+html{
 	height: 100%;
 	max-width: 100%;
 	overflow-x: hidden;
-	overflow-y: hidden;
-	background-image: linear-gradient(lightseagreen, lightblue);
+	overflow-y: scroll;
+	background-image: linear-gradient(lightblue, lightseagreen);
+}
+body{
+	height: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        background-image: linear-gradient(lightseagreen, lightblue);
+
 }
 #home_banner{
 	height: 12%;
@@ -16,8 +24,6 @@ html, body{
 	text-align: center;
 	left: 15vw;
 	width: 70vw;
-  overflow-y: scroll;
-  overflow-x: hidden;
 /*	margin-top: 10vh;*/
 }
 
@@ -41,12 +47,13 @@ html, body{
 
 #ticket_info{
 	border: solid;
-	height: 80vh;
+	height: 70vh;
 	background-image: linear-gradient(lightsalmon, peachpuff);
         border-radius: 8px;
         border: 1px solid #ccc;
         box-shadow: 10px 10px 5px steelblue;
 }
+
 #ticket_info th, td{
 	padding: 5px;
 }
@@ -57,7 +64,6 @@ html, body{
 	border: solid;
 	height: 40vh;
 }
-
 #edit_footer{
 	margin-top: 90vh;
 	margin-right: 10vw;

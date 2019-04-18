@@ -1,10 +1,5 @@
 <?php	session_start(); require('dbconnect.php');
-	//checking if user was authenticated by checking if they have a usertype
-	if(!isset($_SESSION["user_type"])){
-		echo("user_type is NOT set");
-		header("Location: ./login.php");
-		exit();
-	}
+	include("authenticate_session.php");
 	//redirects to home if the user's type is not admin
 	if($_SESSION["user_type"] != "Administrator"){
 		header("Location: ./home.php");
