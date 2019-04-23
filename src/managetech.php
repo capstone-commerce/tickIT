@@ -1,4 +1,6 @@
-<?php session_start(); require('dbconnect.php');
+<?php
+	session_start();
+	require('dbconnect.php');
 	include("authenticate_session.php");
 	//redirects to home if the user's type is not admin
 	if($_SESSION["user_type"] != "Administrator"){

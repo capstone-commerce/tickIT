@@ -1,36 +1,21 @@
-<?php session_start();
+<?php
+	session_start();
 	include("authenticate_session.php");
 ?>
-
 <!DOCTYPE html>
-
 <html>
-
 <head>
-
 	<title>Update Ticket | tickIT</title>
-
 	<link rel="stylesheet" type="text/css" href="./static/css/edit.css">
-
 	<script>
-
 		window.onload = function(){
-      document.getElementById("home_button").onclick = function () {window.location.href='./home.php'};
-
-			//document.getElementById("logout_button").onclick = function () {window.location.href='./logout.php'};
-
+		      document.getElementById("home_button").onclick = function () {window.location.href='./home.php'};
 			document.getElementById("submit_ticket_button").onclick = function () {window.location.href='./transaction.php'};
-
 		}
-
 	</script>
-
 </head>
-
 <body>
-
-<div id="home_banner">
-
+	<div id="home_banner">
 	</div>
  <div id="settings_sidebar">
 		<button id="home_button">Home</button>
@@ -44,7 +29,7 @@
     <?php
       require("dbconnect.php");
       $ticket_number = $_POST["ticketNum"];
-      $_SESSION["ticketNum"] = $ticket_number;
+      $_SESSION["ticketNum"] = $_POST["ticketNum"];
       $infoQuery = "select * from Tickets where ticket_number='$ticket_number';";
       $ticketInfo = mysqli_query($CSDB, $infoQuery);
       $updateArray = mysqli_fetch_assoc($ticketInfo);
@@ -132,6 +117,8 @@
           }
         echo "</tr>";
         echo "<tr>";
+          echo "<td><input type ='checkbox' value='Yes' name='email_customer'>Email Customer This Update?</td>";
+		$_SESSION['ticket_number'] = $updateArray["ticket_number"];
           echo "<td><input type ='submit' value='Update' name='submitEdit'></td>";
         echo "</tr>";
       echo "</table></form>";
@@ -146,11 +133,6 @@
 	        			output.innerHTML = this.value;
 	    			}
     			</script>
-   
-
 	</div>
-
-
 </body>
-
 </html>

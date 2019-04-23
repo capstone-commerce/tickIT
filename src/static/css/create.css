@@ -18,7 +18,7 @@ html, body{
 	left: 50%;
 	border: solid;
 	width: 70vw;
-	margin-top: 10vh;
+	margin-top: 15vh;
 	background-image: linear-gradient(lightsalmon, peachpuff);
 }
 /*.slider{
@@ -56,22 +56,6 @@ html, body{
         overflow-y: hidden;
         background-image: linear-gradient(lightblue, lightseagreen);
 }*/
-#home_banner{
-        height:12%;
-        width:100%;
-        background-image:url("../img/banner.jpg");
-}
-#create_ticket_menu{
-        transform: translate(-50%, -24%);
-        position: absolute;
-        text-align: center;
-        top: 20%;
-        left: 50%;
-        border: solid;
-        width: 70vw;
-        margin-top: 10vh;
-        background-image: linear-gradient(lightsalmon, peachpuff);
-}
 .slider{
         -webkit-appearance: none;
         width: 75%;
@@ -116,16 +100,6 @@ input[type=text], select{
         opacity: 0.8;
         filter: alpha(opacity=80);
 }
-input[type=text], select{
-	padding: 12px 20px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 1px solid #ccc;
-	border-radius: 8px;
-	box-sizing: border-box;
-	opacity: 0.8;
-	filter: alpha(opacity=80);
-}
 #text_area{
         float:left;
 }
@@ -139,24 +113,13 @@ textarea{
         opacity: 0.8;
         filter: alpha(opacity=80);
 }
-textarea{
-	padding: 12px 20px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 1px solid #ccc;
-	border-radius: 8px;
-	box-sizing: border-box;
-	opacity: 0.8;
-	filter: alpha(opacity=80);
-}
 #create_footer{
 	margin-top: 70vh;
 	margin-right: 10vw;
 	float:right;
 }
 #home_button{
-	float: right;
-	padding: 12px 20px;
+	padding: 8px 20px;
 	margin: 8px 0;
 	display: inline-block;
 	border: 1px solid #ccc;
@@ -177,7 +140,7 @@ input[type=submit]{
         margin-right: 10vw;
         float:right;
 }
-#home_button{
+/*#home_button{
         float: right;
         padding: 12px 20px;
         margin: 8px 0;
@@ -188,7 +151,7 @@ input[type=submit]{
         opacity: 0.8;
         filter: alpha(opacity=80);
         cursor: pointer;
-}
+}*/
 input[type=submit]{
         background-color: limegreen;
         padding: 14px 20px;

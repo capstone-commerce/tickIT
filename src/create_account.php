@@ -1,4 +1,5 @@
-<?php session_start();
+<?php
+	session_start();
 	include("authenticate_session.php");
 
 	//redirects to home if the user's type is not admin

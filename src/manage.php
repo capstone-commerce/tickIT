@@ -1,9 +1,11 @@
-<?php session_start(); require('dbconnect.php');
+<?php
+	session_start();
+	require('dbconnect.php');
 	include("authenticate_session.php");
 	//redirects to home if the user's type is not admin
 	if($_SESSION["user_type"] != "Administrator"){
 		header("Location: ./home.php");
-		exit();
+		exit;
 	}
 ?>
 <!DOCTYPE html>
@@ -26,22 +28,22 @@
 	</div>
 	<div id="manage_main">
 		<table id="tech_table">
-			<tr><td><h3>Users</h3></td><td><h3>Role</h3></td></tr>
+			<th><h3>Users</h3><td><h3>Role</h3></td></th>
 			<?php
 				$queueQuery = "select username, role from Users where role='Administrator'";
 				$Array = mysqli_query($CSDB, $queueQuery);
 				while($row = mysqli_fetch_assoc($Array)){
-					echo("<tr><td>" . $row["username"] . "</td><td>" . $row["role"] . "</td></tr>");
+					echo("<tr><td>" . $row["username"] . "</td><td>" . $row["role"] . "</td><td></td></tr>");
 				}
 			?>
 			<?php
 				$queueQuery = "select username, role from Users where role='Technician'";
 				$Array = mysqli_query($CSDB, $queueQuery);
 				while($row = mysqli_fetch_assoc($Array)){
-					echo("<form action='managetech.php' method='post' <tr><td>" 
+					echo("<tr><td><form action='managetech.php' method='post'>" 
 					. $row["username"] . "</td><td>" . $row["role"] . "</td><td>"
 					. "<input type='hidden' value=" . $row["username"] . " name='username'/>"
-					. "<input type='submit' id='manage_tech_button' value='Manage'/></td></tr> </form>");
+					. "<input type='submit' id='manage_tech_button' value='Manage'/></td> </form></tr>");
 				}
 			?>
 		</table>

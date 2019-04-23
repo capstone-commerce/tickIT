@@ -1,6 +1,7 @@
 <?php
   session_start();
   require("dbconnect.php");
+  include("authenticate_session.php");
 ?>
 
 <!Doctype html>
@@ -34,9 +35,9 @@
     <form method="post" action="closeTicket.php">
       <table id="transaction_info" width ="800">
         <tr>
-          <th>Amount</th>
-          <th>Charges</th>
-          <th>Payment Method</th>
+          <th>*Amount</th>
+          <th>*Charges</th>
+          <th>*Payment Method</th>
           <th>Additional Notes</th>
         </tr>
         <tr>
@@ -49,6 +50,12 @@
           <td><input type="submit" name="TransactionSubmit" value="Submit"></td>
         </tr>
       </table>
+      <?php
+        if(isset($_SESSION["transactionMSG"])){
+          echo $_SESSION["transactionMSG"];
+          $_SESSION["transactionMSG"] = "";
+        }
+      ?>
   </div>
   </div>
 </body>

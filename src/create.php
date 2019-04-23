@@ -61,7 +61,7 @@
 	</div>
 	<div id="home_banner">
 	</div>
-	<div id="create_footer">
+	<div id="create_header">
 		<button id="home_button">Home</button>
 	</div>
 </body>

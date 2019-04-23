@@ -1,4 +1,5 @@
-<?php session_start();
+<?php
+	session_start();
 	require("dbconnect.php");
 	include("authenticate_session.php");
 ?>
@@ -16,11 +17,7 @@
 		function goto_manage(){
 			window.location.href='./manage.php';
 		}
-		function goto_update_ticket(/*$ticketNum*/){
-			//$_SESSION["update_ticketNum"] = $ticketNum;
-			window.location.href='./edit.php'
-		        //header("Location: ./edit.php");
-		}
+   
 	</script>
 </head>
 <body>
@@ -42,13 +39,18 @@
 		?>
 	</div>
 	<div id="home_main">
+  <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 		<table id="attribute_table">
 			<tr><td><input type="checkbox" name="archived_tickets" value="Archived Tickets"> Archived Tickets<br></td></tr>
-			<tr><td><input type="checkbox" name="range_search" value="Priority"> Priority<br></td></tr>
-			<tr><td><input type="range" min="1" max="5" value="3" class="slider" id="priority_range"></td></tr>
+      <tr><td><input type="checkbox" name="date_created" value="Date Created">Date (YYYY-MM-DD)<br></td></tr>
+      <tr><td><input type='checkbox' name='assignee' value='Assignee'>Assignee<br></td></tr>
+
+			<tr><td><input type="checkbox" name="range_search" value="Priority"> Priority <span id="demo"></span><br></td></tr>
+			<tr><td><input type="range" min="1" max="9" value="5" class="slider" id="priority_range" name="priority"></td></tr>
 			<tr><td><input type="text" name="ticket_table_search" value=""></td></tr>
 			<tr><td><input type="submit" name="ticket_table_search_submit" value="Search"></td></tr>
 		</table>
+   </form>
    <!--/*
    <?php
      if($_SESSSION["user_type"] == "Technician"){
@@ -63,39 +65,111 @@
 				<tr>
 					<th>Ticket ID</th>
 					<th>Description</th>
-          <th>Date Created</th>
- 				  <th>Urgency</th>
+       <?php
+         if(isset($_POST["archived_tickets"])){
+           echo "<th>Date Finished</th>";
+         }else{
+          echo "<th>Date Created</th>";
+         }
+ 				  echo "<th>Urgency</th>";
+         if($_SESSION["user_type"] == "Administrator" || isset($_POST["archived_tickets"])){
+           echo "<th>Assignee</th></tr>";
+         }?>
 		<?php
+       $ticket_type;
+       $search_date;
+       $search_priority;
+       $queueQuery;
+       //search variable for archived tickets
+       if(isset($_POST["archived_tickets"])){
+       
+         if(isset($_POST["date_created"])){
+           $queueQuery = "Select ticket_number, issue, date_finished, urgency, username from Archived where date_finished = '".$_POST["ticket_table_search"]."';";
+         }else if(isset($_POST["assignee"])){
+           $queueQuery = "Select ticket_number, issue, date_finished, urgency, username from Archived where username = '".$_POST["ticket_table_search"]."';";
+         }else{
+           $queueQuery = "Select ticket_number, issue, date_finished, urgency, username from Archived;";
+         }
+         
+       }else if(!isset($_POST["archived_tickets"])){
+         if(isset($_POST["date_created"])){
+         
+           if($_SESSION["user_type"] == "Technician"){
+             $queueQuery = "Select ticket_number, issue, date_created, urgency from Tickets where username = ".$_SESSION["username"]." and date_created = '".$_POST["ticket_table_search"]."';";
+           }else{
+             $queueQuery = "Select ticket_number, issue, date_created, urgency from Tickets where date_created = '".$_POST["ticket_table_search"]."';";
+           }
+           
+         }else if(isset($_POST["range_search"])){
+         
+           if($_SESSION["user_type"] == "Technician"){
+             $queueQuery = "Select ticket_number, issue, date_created, urgency from Tickets where username = ".$_SESSION["username"]." and urgency = ".$_POST["priority"].";";
+           }else{
+             $queueQuery = "Select ticket_number, issue, date_created, urgency, username from Tickets where urgency  ".$_POST["priority"].";";
+           }
+           
+         }else if(isset($_POST["assignee"])){
+           $queueQuery = "Select ticket_number, issue, date_created, urgency, username from Tickets where username=".$_POST["ticket_table_search"].";";
+         }else if(!isset($_POST["archived_tickets"]) && !isset($_POST["range_search"]) && !isset($_POST["assignee"]) && !isset($_POST["date_created"])){
+           if($_SESSION["user_type"] == "Technician"){
+             $queueQuery = "Select ticket_number, issue, date_created, urgency from Tickets where username = '".$_SESSION["username"]."';";
+           }else{
+             $queueQuery = "Select ticket_number, issue, date_created, urgency, username from Tickets;";
+           }
+         }
+       }
+       
+       
 			//pull info from DB and populate home's table
-        		if($_SESSION["user_type"] == "Technician"){
-            			echo "</tr>";
-				$techName = $_SESSION["username"];
-            			$queueQuery = "select ticket_number, issue, date_created, urgency from Tickets where username='$techName';";
-            			$Array = mysqli_query($CSDB, $queueQuery);
-				while($row = mysqli_fetch_assoc($Array)){
-               				echo '<tronclick="goto_update_ticket('.$row["ticket_number"].');">';
+       	if($_SESSION["user_type"] == "Technician"){
+     			$Array = mysqli_query($CSDB, $queueQuery);
+				  while($row = mysqli_fetch_assoc($Array)){
+              if(!isset($_POST["archived_tickets"])){
+                      echo "<tr>";
                				echo "<td>" . $row["ticket_number"] . "</td><td>" . $row["issue"] . "</td><td>" . $row["date_created"] . "</td><td>" . $row["urgency"] . "</td>";
                				echo "<td><form method='post' action='edit.php'><input type='hidden' value=".$row["ticket_number"]." name='ticketNum'>";
                       echo "<input type='submit' id='ticketInfo' value='Edit'></form></td>";
                				echo "</tr>";
-            			}
-          		}else if($_SESSION["user_type"] == "Administrator"){
-            			echo "<th>Assignee</th></tr>";
-             			$queueQuery = "select ticket_number, issue, date_created, urgency, username from Tickets;";
-             			$Array = mysqli_query($CSDB, $queueQuery);
-				while($row = mysqli_fetch_assoc($Array)){
-               				echo '<tr onclick="goto_update_ticket('.$row["ticket_number"].');">';
+              }else{
+                echo "<tr>";
+                echo "<td>" .$row["ticket_number"]."</td><td>".$row["issue"]."</td><td>".$row["date_finished"]."</td><td>".$row["urgency"]."</td><td>".$row["username"]."</td>";
+                echo "<td><form method='post' action='ticketHistory.php'><input type ='hidden' value =".$row["ticket_number"]."name='archiveNum'>";
+                echo "<input type='submit' id='ticketInfo' value='View'></form></td>";
+                echo "</tr>";
+ 			        }
+          }
+               
+    		}else if($_SESSION["user_type"] == "Administrator"){
+             			
+   			  $Array = mysqli_query($CSDB, $queueQuery);
+			  	while($row = mysqli_fetch_assoc($Array)){
+            if(!isset($_POST["archived_tickets"])){
                				echo "<td>" . $row["ticket_number"] . "</td><td>" . $row["issue"] . "</td><td>" . $row["date_created"] . "</td><td>". $row["urgency"]."</td><td>". $row['username']."</td>";
                       
                       echo "<td><form method='post' action='edit.php'><input type='hidden' value=".$row["ticket_number"]." name='ticketNum'>";
                       echo "<input type='submit' id='ticketInfo' value='Edit'></form></td>";
                				echo "</tr>";
-           			}
-          		}
+            }else{
+                echo "</tr>";
+                echo "<td>".$row["ticket_number"]."</td><td>".$row["issue"]."</td><td>".$row["date_finished"]."</td><td>".$row["urgency"]."</td><td>".$row["username"]."</td>";
+                echo "<td><form method='post' action='ticketHistory.php'><input type='hidden' value=".$row["ticket_number"]."name='archiveNum'>";
+                echo "<input type='submit' id='ticketInfo' value='View'></form></td>";
+                echo "</tr>";
+            }
+ 			    }
+  		  }
      mysqli_close($CSDB);
 		?>
 			</table>
 		</div>
+   <script>
+      var slider = document.getElementById("priority_range");
+			var output = document.getElementById("demo");
+			output.innerHTML = slider.value;
+			slider.oninput = function() {
+			  output.innerHTML = this.value;
+			}
+   </script>
 	</div>
 	<div id="home_footer">
 		<form id="logout_button" action="logout.php">

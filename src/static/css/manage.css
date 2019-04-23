@@ -34,7 +34,7 @@ table{
         background-color: lightsalmon;
         border-radius: 8px;
         border: 1px solid #ccc;
-       box-shadow: 10px 10px 5px steelblue;
+        box-shadow: 10px 10px 5px steelblue;
 }
 #tech_table{
         /*border: solid;*/
@@ -42,9 +42,9 @@ table{
         font-size: 32;
         border-collapse: collapse;
 }
-#tech_table th,td{
+#tech_table tr, td{
         padding: 5px;
-        border-bottom: 1px solid #ddd;y
+        border-bottom: 1px solid #ddd;
 }
 #create_tech_button{
         /*nothing yet*/
@@ -56,23 +56,22 @@ table{
         border-radius: 8px;
         cursor: pointer;
 }
-#tech_table_header{
+/*#tech_table_header{
         text-align: left;
 }
-/*#tech_table_header tr:hover{
+#tech_table_header tr:hover{
         color: black;
         cursor: default;
 }*/
-#tech_table tr{
-        /*outline: thin solid;*/
-        border-bottom: 1px solid #ddd;
-}
-/*#tech_table tr:hover{
-       color: grey;
+#tech_table tr:hover{
+        color: grey;
         cursor: pointer;
-}*/
+}
 #tech_table tr:nth-child(even){
         background-color: #FFDEAD;
+}
+#tech_table tr:nth-child(odd){
+	background-color: lightsalmon;
 }
 #manage_footer{
         margin-top: 75vh;
