@@ -34,7 +34,7 @@ switch($_SESSION['message_type']){
 		break;
 	case "ticket_updated":
 		$ticketNum 	= $_SESSION['ticket_number'];
-		$update_query 	= "SELECT * FROM Tickets WHERE ticket_number = 8";
+		$update_query 	= "SELECT * FROM Tickets WHERE ticket_number='$ticketNum'";
 		$update_retval 	= mysqli_query($CSDB, $update_query);
 		$update_row	= mysqli_fetch_assoc($update_retval);
 

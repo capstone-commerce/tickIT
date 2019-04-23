@@ -47,14 +47,9 @@
       $deleteTicket = "delete from Tickets where ticket_number=".$infoArray['ticket_number'].";";
       
       $retval = mysqli_query($CSDB, $deleteTicket);
-      
-      header("Location: ./home.php");
-      exit;
-      mysqli_close($CSDB);
-  }
-  
-  
-    
- 
 
-      
+      mysqli_close($CSDB);
+
+      header("Location: ./email.php");
+      exit;
+  }

@@ -96,7 +96,7 @@
       echo "<form method='post' action='update.php'>";
       echo "<table width='800'>";
         echo "<tr>";
-          echo "<th>Edit Issue</th>";
+          echo "<th>Edit Issue Description</th>";
           echo "<th>Change Urgency level</th>";
         echo "</tr>";
         echo "<tr>";
@@ -105,7 +105,7 @@
                echo "<br>Priority <span id = 'demo'></span></td>";
         echo "</tr>";
         echo "<tr>";
-          echo "<th>Notes</th>";
+          echo "<th>Comments *Will be emailed to customer if selected*</th>";
           if($_SESSION["user_type"] == "Administrator"){
             echo "<th>Change Assignee</th>";
           }
@@ -117,7 +117,7 @@
           }
         echo "</tr>";
         echo "<tr>";
-          echo "<td><input type ='checkbox' value='Yes' name='email_customer'>Email Customer This Update?</td>";
+          echo "<td><b>Email this update to the customer: </b><input type ='checkbox' value='Yes' name='email_customer'></td>";
 		$_SESSION['ticket_number'] = $updateArray["ticket_number"];
           echo "<td><input type ='submit' value='Update' name='submitEdit'></td>";
         echo "</tr>";

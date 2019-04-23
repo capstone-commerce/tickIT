@@ -34,9 +34,12 @@
     $Update = mysqli_query($CSDB, $editQuery);
 
   if(isset($_POST["email_customer"]) && ($_POST["email_customer"] == 'Yes')){
-	$_SESSION['edit_assignee'] 	= $_POST['editAssignee'];
-	$_SESSION['edit_notes'] 	= $_POST['editNotes'];
-	$_SESSION['edit_issue'] 	= $_POST['editIssue'];
+	$update_query = "SELECT * FROM Tickets WHERE ticket_number='$ticket_number'";
+	$update_sql = mysqli_query($CSDB, $update_query);
+	$update_row = mysqli_fetch_assoc($update_sql);
+	$_SESSION['edit_assignee'] 	= $update_row['username'];
+	$_SESSION['edit_notes'] 	= $update_row['comments'];
+	$_SESSION['edit_issue'] 	= $update_row['issue'];
 	$_SESSION['message_type']	= "ticket_updated";
 	mysqli_close($CSDB);
 	header("Location: ./email.php");
