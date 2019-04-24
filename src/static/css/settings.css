@@ -49,6 +49,8 @@ table{
 	left: 6vw;
 	height: 60vh;
         float: left;
+}
+#settings_main table{
         overflow-y: scroll;
         overflow-x: hidden;
         background-color: lightsalmon;

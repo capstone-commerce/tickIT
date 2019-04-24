@@ -42,8 +42,14 @@
   <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 		<table id="attribute_table">
 			<tr><td><input type="checkbox" name="archived_tickets" value="Archived Tickets"> Archived Tickets<br></td></tr>
-      <tr><td><input type="checkbox" name="date_created" value="Date Created">Date (YYYY-MM-DD)<br></td></tr>
-      <tr><td><input type='checkbox' name='assignee' value='Assignee'>Assignee<br></td></tr>
+      <tr><td><input type="checkbox" name="date_created" value="Date Created">Date (fill bellow YYYY-MM-DD)<br></td></tr>
+      <?php
+        if($_SESSION["user_type"] == "Technician"){
+          echo "<tr><td><input type='checkbox' name='assignee' value='Assignee'>Assignee (Archived only. Fill bellow)<br></td></tr>";
+        }else{
+          echo "<tr><td><input type='checkbox' name='assignee' value='Assignee'>Assignee (Fill below)<br></td></tr>";
+        }
+      ?>
 
 			<tr><td><input type="checkbox" name="range_search" value="Priority"> Priority <span id="demo"></span><br></td></tr>
 			<tr><td><input type="range" min="1" max="9" value="5" class="slider" id="priority_range" name="priority"></td></tr>
@@ -80,41 +86,46 @@
        $search_date;
        $search_priority;
        $queueQuery;
-       //search variable for archived tickets
+       $searchValue = filter_var($_POST["ticket_table_search"], 513);
+       /*If looking for archived tickets*/
        if(isset($_POST["archived_tickets"])){
        
          if(isset($_POST["date_created"])){
-           $queueQuery = "Select ticket_number, issue, date_finished, urgency, username from Archived where date_finished = '".$_POST["ticket_table_search"]."';";
+           $queueQuery = "Select ticket_number, issue, date_finished, urgency, username from Archived where date_finished = '$searchValue';";
          }else if(isset($_POST["assignee"])){
-           $queueQuery = "Select ticket_number, issue, date_finished, urgency, username from Archived where username = '".$_POST["ticket_table_search"]."';";
+           $queueQuery = "Select ticket_number, issue, date_finished, urgency, username from Archived where username = '$searchValue';";
+         }else if(isset($_POST["range_search"])){
+           $queueQuery = "select ticket_number, issue, date_finished, urgency, username from Archived where urgency = ".$_POST["priority"].";";
          }else{
            $queueQuery = "Select ticket_number, issue, date_finished, urgency, username from Archived;";
          }
-         
+        /*If not looking for archived tickets*/ 
        }else if(!isset($_POST["archived_tickets"])){
+         /*searching tickets by date*/
          if(isset($_POST["date_created"])){
          
            if($_SESSION["user_type"] == "Technician"){
-             $queueQuery = "Select ticket_number, issue, date_created, urgency from Tickets where username = ".$_SESSION["username"]." and date_created = '".$_POST["ticket_table_search"]."';";
+             $queueQuery = "Select ticket_number, issue, date_created, urgency from Tickets where username = ".$_SESSION["username"]." and date_created = '$searchValue';";
            }else{
-             $queueQuery = "Select ticket_number, issue, date_created, urgency from Tickets where date_created = '".$_POST["ticket_table_search"]."';";
+             $queueQuery = "Select ticket_number, issue, date_created, urgency, username from Tickets where date_created = '$searchValue';";
            }
-           
+         /*searching tickets by priority*/  
          }else if(isset($_POST["range_search"])){
          
            if($_SESSION["user_type"] == "Technician"){
-             $queueQuery = "Select ticket_number, issue, date_created, urgency from Tickets where username = ".$_SESSION["username"]." and urgency = ".$_POST["priority"].";";
+             $queueQuery = "Select ticket_number, issue, date_created, urgency from Tickets where username = '".$_SESSION["username"]."' and urgency = ".$_POST["priority"].";";
            }else{
              $queueQuery = "Select ticket_number, issue, date_created, urgency, username from Tickets where urgency  ".$_POST["priority"].";";
            }
-           
-         }else if(isset($_POST["assignee"])){
-           $queueQuery = "Select ticket_number, issue, date_created, urgency, username from Tickets where username=".$_POST["ticket_table_search"].";";
-         }else if(!isset($_POST["archived_tickets"]) && !isset($_POST["range_search"]) && !isset($_POST["assignee"]) && !isset($_POST["date_created"])){
+         /*searching tickets by assignee Admin only*/  
+         }else if(isset($_POST["assignee"]) && $_SESSION["user_type"] == "Administrator"){
+           $queueQuery = "Select ticket_number, issue, date_created, urgency, username from Tickets where username='$searchValue';";
+         /*Default ticket queue*/
+         }else{
            if($_SESSION["user_type"] == "Technician"){
              $queueQuery = "Select ticket_number, issue, date_created, urgency from Tickets where username = '".$_SESSION["username"]."';";
            }else{
-             $queueQuery = "Select ticket_number, issue, date_created, urgency, username from Tickets;";
+              $queueQuery = "Select ticket_number, issue, date_created, urgency, username from Tickets;";
            }
          }
        }

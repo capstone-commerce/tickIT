@@ -80,7 +80,7 @@
           }
         echo "</tr>";
         echo "<tr>";
-          echo "<th>Notes</th>";
+          echo "<th>Note History</th>";
         echo "</tr>";
         echo "<tr>";
           echo "<td>".$updateArray["comments"]."</td>";
@@ -92,7 +92,7 @@
 
 		<div id="ticket_info">
     <?php
-			echo "<b>| Table of updates |</b>";
+			echo "<b>| Update Ticket |</b>";
       echo "<form method='post' action='update.php'>";
       echo "<table width='800'>";
         echo "<tr>";

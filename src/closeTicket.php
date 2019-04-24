@@ -8,11 +8,22 @@
       header("Location: ./transaction.php");
       exit();
     }else{
-    
-      $amount = filter_var($_POST["amount"], 515);
-      $charges = filter_var($_POST["charges"], 515);
-      $payMethod = filter_var($_POST["pay_method"], 515);
-      $Notes = filter_var($_POST["additionalNotes"], 515);
+
+	//For email
+	$close_query = "select * from Tickets where ticket_number = ".$_SESSION["ticket_number"].";";
+	$close_sql = mysqli_query($CSDB, $close_query);
+	$close_row = mysqli_fetch_assoc($close_sql);
+	$_SESSION['close_email'] 	= $close_row['customer_email'];
+	$_SESSION['close_name'] 	= $close_row['customer_name'];
+	$_SESSION['close_assignee'] 	= $close_row['username'];
+	$_SESSION['close_notes'] 	= $_POST['additionalNotes'];
+	$_SESSION['close_issue'] 	= $close_row['issue'];
+	$_SESSION['message_type']	= "ticket_closed";
+
+      $amount = filter_var($_POST["amount"], 259);
+      $charges = filter_var($_POST["charges"], 513);
+      $payMethod = filter_var($_POST["pay_method"], 513);
+      $Notes = filter_var($_POST["additionalNotes"], 513);
       
       $ticket_info = "select * from Tickets where ticket_number = ".$_SESSION["ticket_number"].";";
       $retval = mysqli_query($CSDB, $ticket_info);
@@ -48,8 +59,7 @@
       
       $retval = mysqli_query($CSDB, $deleteTicket);
 
-      mysqli_close($CSDB);
-
-      header("Location: ./email.php");
-      exit;
+	mysqli_close($CSDB);
+	header("Location: ./email.php");
+	exit;
   }

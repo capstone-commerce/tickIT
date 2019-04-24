@@ -2,32 +2,38 @@
 	session_start();
 	include("authenticate_session.php");
 	require('dbconnect.php');
+ 
+  if($_POST["customer_name"] == "" || $_POST["customer_email"] == "" || $_POST["issue"] == "" || $_POST["device_brand"] == "" || $_POST["device_serialNumber"] == ""){
+    header("Location: ./create.php");
+    $_SESSION["createMSG"] = "Please fill out required fields (*)";
+    exit;
+  }
 
 	if(! get_magic_quotes_gpc() ) {
 		$ticket_number 		= addslashes ($_POST['ticket_number']);
 		$customer_name 		= addslashes ($_POST['customer_name']);
 		$customer_email 	= addslashes ($_POST['customer_email']);
 		$issue 			= addslashes ($_POST['issue']);
-		//$urgency 		= addslashes ($_POST['urgency']);
+		$urgency 		= addslashes ($_POST['urgency']);
 		$comments 		= addslashes ($_POST['comments']);
 		$username 		= addslashes ($_POST['username']);
 		$device_brand 		= addslashes ($_POST['device_brand']);
 		$device_serialNumber 	= addslashes ($_POST['device_serialNumber']);
 	} else {
 		$ticket_number 		= ($_POST['ticket_number']);
-		$customer_name 		= ($_POST['customer_name']);
-		$customer_email 	= ($_POST['customer_email']);
-		$issue 			= ($_POST['issue']);
-		//$urgency 		= ($_POST['urgency']);
-		$comments		= ($_POST['comments']);
+		$customer_name 		= filter_var($_POST['customer_name'], 513);
+		$customer_email 	= filter_var($_POST['customer_email'], 274);
+		$issue 			= filter_var($_POST['issue'], 513);
+		$urgency 		= filter_var($_POST['urgency'], 513);
+		$comments		= filter_var($_POST['comments'], 513);
 		$username 		= ($_POST['username']);
-		$device_brand 		= ($_POST['device_brand']);
-		$device_serialNumber 	= ($_POST['device_serialNumber']);
+		$device_brand 		= filter_var($_POST['device_brand'], 513);
+		$device_serialNumber 	= filter_var($_POST['device_serialNumber'], 513);
 	}
 	$status 		= "In Progress";
 	$date_created 		= date("Y-m-d H:i:s");	//time in UTC
 	$transactionID = $ticket_number;
-	$urgency = 3;
+//	$urgency = 3;
 
 	$transaction_sql = "INSERT INTO Transaction_History " . 
 			"(transactionID,status) VALUES ('$transactionID', 'pending')";

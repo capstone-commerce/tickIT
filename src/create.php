@@ -30,23 +30,28 @@
 							$ticket_num += 1;
 							echo("<input type='hidden' name='ticket_number' value='$ticket_num'>");
 							?>
-							<input type="text" name="customer_name" value=""> <br> Customer Name
+							<input type="text" name="customer_name" value=""> <br> *Customer Name
 						</td>
-						<td><input type="text" name="customer_email" value=""> <br> Customer Email</td>
-						<td><input type="text" name="issue" value=""> <br> Issue</td>
+						<td><input type="text" name="customer_email" value=""> <br> *Customer Email</td>
+						<td><input type="text" name="issue" value=""> <br> *Issue</td>
 					</tr>
 					<tr>
-					<!--	<td><input type="range" min="1" max="5" value="3" class="slider" id="priority_range"> <br>
-							Urgency: <span id="demo"></span></td>
-					-->	<td><br> Comments: <textarea name="comments" rows="10" cols="50" maxlength="150"></textarea></td>
+						<td><input type="range" min="1" max="9" name="urgency" value="5" class="slider" id="priority_range"> <br>
+							*Urgency: <span id="demo"></span></td>
+						<td><br> Comments: <textarea name="comments" rows="10" cols="50" maxlength="150"></textarea></td>
 						<?php $technician = $_SESSION['username']; $_SESSION['message_type'] = "created_ticket";?>
 						<td><input type="hidden" name="username" value=<?php echo("$technician"); ?>></td>
+            <?php
+              if(isset($_SESSION["createMSG"])){
+                echo $_SESSION["createMSG"];
+                $_SESSION["createMSG"] == "";
+              }?> 
 					</tr>
 					<tr>
-						<td><input type="text" name="device_brand" value=""> <br> Device Brand</td>
-						<td><input type="text" name="device_serialNumber" value=""> <br> Device SN</td>
+						<td><input type="text" name="device_brand" value=""> <br> *Device Brand</td>
+						<td><input type="text" name="device_serialNumber" value=""> <br> *Device SN</td>
 					</tr>
-<!--				<script>
+				<script>
 				    	var slider = document.getElementById("priority_range");
 				    	var output = document.getElementById("demo");
 				    	output.innerHTML = slider.value;
@@ -54,7 +59,7 @@
 		        			output.innerHTML = this.value;
 					}
 				</script>
--->				</table>
+				</table>
 			</div>
 			<input type="submit">
 		</form>

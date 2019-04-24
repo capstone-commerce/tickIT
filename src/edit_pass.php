@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Edit Account | tickIT</title>
+	<title>Change Password | tickIT</title>
 	<link rel="stylesheet" type="text/css" href="./static/css/edit_account.css">
 	<script>
 		window.onload = function(){
@@ -15,19 +15,21 @@
 </head>
 <body>
 	<div id="edit_account_banner">
-		<h2>Edit Account</h2>
+		<h2>Change Password</h2>
 		<button id="home_button">Home</button>
 	</div>
 	<div id="edit_account_main">
 		<form action="dbcreate_account.php" method="post">
 			<table id="info_table">
+				<th>Old Password</th><th>Confirm Password</th><th>New Password</th>
 				<tr>
-					<td>Password<input type="text" name="password" value=""></td>
-					<td>Email<input type="text" name="email" value=""></td>
-					<td>Phone<input type="text" name="phone_number" value=""></td>
+					<td><input type="text" name="old_password" value=""></td>
+					<td><input type="text" name="confirm_old_password" value=""></td>
+					<td><input type="text" name="password" value=""></td>
 				</tr>
 			</table>
 			<input type="hidden" name="new_account" value="false">
+			<input type="hidden" name="update_account_type" value=<?php echo("'" . $_POST['update_account_type'] . "'"); ?>>
 			<input type="submit">
 		</form>
 	</div>

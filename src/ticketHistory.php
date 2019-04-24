@@ -27,16 +27,10 @@
     <?php
       require("dbconnect.php");
       $ticket_number = $_POST["archiveNum"];
-      echo $ticket_number;
+      //echo $ticket_number;
       //$_SESSION["ticketNum"] = $_POST["archiveNum"];
-      /*
       $infoQuery = "select * from Archived where ticket_number='$ticket_number';";
       $ticketInfo = mysqli_query($CSDB, $infoQuery);
-      if($ticketInfo){
-        echo "Query successful";
-      }else{
-        echo "Query failed";
-      }
       $infoArray = mysqli_fetch_assoc($ticketInfo);
       //echo $infoArray["transactionID"];
 			echo "<b>| Ticket info |</b>";
@@ -87,14 +81,13 @@
         echo "<tr>";
           echo "<td>".$infoArray["comments"]."</td>";
         echo "</tr>";
-      echo "</table>";*/
+      echo "</table>";
     ?>
 		</div>
 
 		<div id='ticket_info'>
     <?php
-    /*
-      $transactionInfo = "Select * from Transaction_History where transactionID='".$infoArray["transactionID"]."';";
+      $transactionInfo = "Select * from Transaction_History where transactionID=".$infoArray["transactionID"].";";
       $transaction = mysqli_query($CSDB, $transactionInfo);
       $transactionArray = mysqli_fetch_assoc($transaction);
 			echo "<b>| Transaction Information |</b>";
@@ -130,7 +123,7 @@
           echo "<td>".$transactionArray["notes"]."</td>";
         echo "</tr>";
       echo "</table>";
-      mysqli_close($CSDB);*/
+      mysqli_close($CSDB);
     ?>
 		</div>
 	</div>

@@ -21,6 +21,7 @@ if(mysqli_num_rows($retval) > 0){	//if record of user exists in CSDB
 	}
 	$_SESSION['username'] = $postUser;
 	$_SESSION['password'] = $postPass;
+	$_SESSION['time_out'] = $account_name_row['time_out'];
 	//mark time into last_login in CSDB
 	$date = date("Y-m-d H:i:s");	//time in UTC
 	$date_query = mysqli_query($CSDB, "UPDATE Users SET last_login='$date', failed_logins=0 WHERE username='$postUser'");

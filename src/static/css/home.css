@@ -111,7 +111,7 @@ table{
 }
 #logout_button{
         float: right;
-        padding-right: 200px;
+        padding-right: 50px;
 }
 input[type=submit], search{
         background-color: limegreen;

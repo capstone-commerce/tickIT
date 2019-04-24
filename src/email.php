@@ -51,6 +51,20 @@ switch($_SESSION['message_type']){
 				"<br><br>Please feel free to contact us in regards to your tickIT!" . 
 				"<br>Best,<br>tickIT Email Bot :)";
 		break;
+	case "ticket_closed":
+		$email 		= $_SESSION['close_email'];
+		$name		= $_SESSION['close_name'];
+		$subject	= "TickIT Closed On [" . $_SESSION['close_issue'] . "]";
+		$body		= "Greetings " . $name .", " . 
+				"<br><br>" . 
+				"Your issue with [" . $_SESSION['close_issue'] . "] has been remedied!" . 
+				"<br>If you have not already stopped by the help center, please do so at your nearest convienence to pick up your device." . 
+				"<br><u>Ticket details</u><br>Assigned Technician: " . $_SESSION['close_assignee'] . "<br>" . 
+				"Closing notes:<br>" . 
+				"[" . $_SESSION['close_notes'] . "]" . 
+				"<br><br>Please feel free to contact us, and don't hesitate to allow us to help you in the future!" . 
+				"<br>Best,<br>tickIT Email Bot :)";
+		break;
 }
 $mail->Subject = $subject;
 $mail->addAddress($email, $name);
@@ -61,6 +75,9 @@ $mail->AltBody = 'ERROR: altbody message sent.';
 //send the message, check for errors
 unset($_SESSION['message_type']);
 
+unset($_SESSION['ticketNum']);
+unset($_SESSION['ticket_number']);
+
 unset($_SESSION['email']);
 unset($_SESSION['customer_name']);
 unset($_SESSION['subject']);
@@ -68,17 +85,15 @@ unset($_SESSION['subject']);
 unset($_SESSION['edit_assignee']);
 unset($_SESSION['edit_notes']);
 unset($_SESSION['edit_issue']);
-unset($_SESSION['ticketNum']);
-unset($_SESSION['ticket_number']);
+
+unset($_SESSION['close_email']);
+unset($_SESSION['close_name']);
+unset($_SESSION['close_assignee']);
+unset($_SESSION['close_notes']);
+unset($_SESSION['close_issue']);
 if (!$mail->send()) {
 	echo "Mailer Error: " . $mail->ErrorInfo;
-	foreach($_SESSION as $value){
-		echo"$value" . " ";
-	}
-//	echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';
-//	header("refresh: 5; url=./create.php");
 } else {
-	//echo "Success! Redirecting to home...";
 	header("Location: ./home.php");
 	exit;
 }

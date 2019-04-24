@@ -17,9 +17,7 @@
 			//document.getElementById("logout_button").onclick = function () {window.location.href='./logout.php'};
 
 			document.getElementById("back_button").onclick = function () {window.location.href='./edit.php'};
-
 		}
-
 	</script>
 </head>
 
@@ -44,7 +42,7 @@
           <td><input type="text" name="amount"></td>
           <td><input type="text" name="charges"></td>
           <td><input type="text" name="pay_method"></td>
-          <td><textarea rows='3' cols='30' name="additionalNotes"></textarea></td>
+          <td><textarea rows='5' cols='20' name="additionalNotes"></textarea></td>
         </tr>
         <tr>
           <td><input type="submit" name="TransactionSubmit" value="Submit"></td>
