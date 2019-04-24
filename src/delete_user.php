@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	include("favicon.php");
 	require('dbconnect.php');
 	include("authenticate_session.php");
 	//redirects to home if the user's type is not admin

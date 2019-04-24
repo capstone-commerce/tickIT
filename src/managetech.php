@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	include("favicon.php");
 	require('dbconnect.php');
 	include("authenticate_session.php");
 	//redirects to home if the user's type is not admin
@@ -48,10 +49,10 @@
 			?>
 		</table>
 		<br><br>
-		<table id="ticket_table">
+<!--		<table id="ticket_table">
 			<th>THIS WILL BE THE TICKET HISTORY TABLE FOR <?php echo($username); ?></th>
 			<tr><td>ticket 1</td></tr>
-		</table>
+		</table> -->
 	</div>
 	<div id="managetech_footer">
 		<form id="logout_button" action="logout.php">

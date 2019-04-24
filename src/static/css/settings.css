@@ -8,6 +8,7 @@ html, body{
 table{
 	width: 75vw;
 	border-collapse: collapse;
+	text-align: center;
 }
 #settings_banner{
 	height: 12%;

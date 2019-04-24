@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	include("authenticate_session.php");
+	include("favicon.php");
 	require('dbconnect.php');
  
   if($_POST["customer_name"] == "" || $_POST["customer_email"] == "" || $_POST["issue"] == "" || $_POST["device_brand"] == "" || $_POST["device_serialNumber"] == ""){

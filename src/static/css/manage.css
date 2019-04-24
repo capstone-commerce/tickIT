@@ -8,6 +8,7 @@ html, body{
 table{
         width: 75vw;
         border-collapse: collapse;
+	text-align: center;
 }
 #manage_banner{
         height: 12%;
@@ -39,7 +40,6 @@ table{
 #tech_table{
         /*border: solid;*/
         /*height: 30vh;*/
-        font-size: 32;
         border-collapse: collapse;
 }
 #tech_table tr, td{

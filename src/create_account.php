@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	include("authenticate_session.php");
-
+	include("favicon.php");
 	//redirects to home if the user's type is not admin
 	if($_SESSION["user_type"] != "Administrator"){
 		header("Location: ./home.php");

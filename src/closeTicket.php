@@ -48,12 +48,10 @@
       
       $retval= mysqli_query($CSDB, $TransactionQuery);
       
-      $ArchivedData = "INSERT INTO Archived". "(ticket_number, customer_name, customer_email, issue, urgency, comments, username, status, date_finished, device_brand, device_serialNumber, transactionID) VALUES ". "($ticket_Number, '$customer_name', '$customer_email', '$issue', $urgency, '$comments', '$username', 'Closed', '$datePaid', '$device_brand', '$device_serial', $transactionID);";
+      $ArchivedData = "INSERT INTO Archived (ticket_number, customer_name, customer_email, issue, urgency, comments, username, status, date_finished, device_brand, device_serialNumber, transactionID) VALUES($ticket_Number, '$customer_name', '$customer_email', '$issue', $urgency, '$comments', '$username', 'Closed', '$datePaid', '$device_brand', '$device_serial', $transactionID);";
       
       
-      $retval = mysqli_query($CSDB, $ArchivedData);
-      
-      
+      $archive = mysqli_query($CSDB, $ArchivedData);
       
       $deleteTicket = "delete from Tickets where ticket_number=".$infoArray['ticket_number'].";";
       
@@ -63,3 +61,4 @@
 	header("Location: ./email.php");
 	exit;
   }
+?>

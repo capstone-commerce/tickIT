@@ -5,7 +5,7 @@ require("dbconnect.php");
 $postUser = filter_var($_POST['username'], 515);
 $postPass = filter_var($_POST['password'], 515);
 
-$sessionSQL = "SELECT * FROM Users WHERE username = '$postUser' and password = '$postPass';";
+$sessionSQL = "SELECT * FROM Users WHERE username = '$postUser';";
 $retval = mysqli_query($CSDB, $sessionSQL);
 $rowArray = mysqli_fetch_assoc($retval);
 
@@ -13,7 +13,7 @@ $account_name_SQL = "SELECT * FROM Users WHERE username = '$postUser';";
 $account_name_retval = mysqli_query($CSDB, $account_name_SQL);
 $account_name_row = mysqli_fetch_assoc($account_name_retval);
 
-if(mysqli_num_rows($retval) > 0){	//if record of user exists in CSDB
+if(mysqli_num_rows($retval) > 0 && password_verify($postPass, $rowArray["password"])){	//if record of user exists in CSDB
 	if($rowArray['role'] == 'Administrator'){
 		$_SESSION['user_type'] = 'Administrator';
 	}else if ($rowArray['role'] == 'Technician'){
@@ -27,8 +27,9 @@ if(mysqli_num_rows($retval) > 0){	//if record of user exists in CSDB
 	$date_query = mysqli_query($CSDB, "UPDATE Users SET last_login='$date', failed_logins=0 WHERE username='$postUser'");
 	//echo($date);
 	header("Location: ./home.php");
+  //$_SESSION["wrong_password"] = "";
 	exit;
-} else if(mysqli_num_rows($retval) <= 0 && mysqli_num_rows($account_name_retval) > 0){	//if account name exists but password doesn't match it
+} else if(mysqli_num_rows($retval) > 0 && !password_verify($postPass, $rowArray["password"])){	//if account name exists but password doesn't match it
 	$failed_login_sql = "UPDATE Users SET failed_logins = failed_logins + 1 WHERE username='$postUser'";
 	$failed_login_retval = mysqli_query($CSDB, $failed_login_sql);
 	$failed_login_row = mysqli_fetch_assoc($failed_login_retval);
@@ -37,6 +38,7 @@ if(mysqli_num_rows($retval) > 0){	//if record of user exists in CSDB
 	exit;
 } else if(mysqli_num_rows($retval) <= 0){
 	header("Location: ./login.php");
+  //$_SESSION["wrong_password"] = "Login Failed: Incorrect password";
 	exit;
 }
 mysqli_close($CSDB);

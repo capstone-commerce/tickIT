@@ -6,11 +6,12 @@
 		if(! get_magic_quotes_gpc() ) {
 			$username = addslashes ($_POST['username']);
 			$password = addslashes ($_POST['password']);
+      $password = password_hash($password, PASSWORD_DEFAULT);
 			$email = addslashes ($_POST['email']);
 			$phone = addslashes ($_POST['phone_number']);
 		} else {
 			$username = ($_POST['username']);
-			$password = ($_POST['password']);
+			$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 			$email = ($_POST['email']);
 			$phone = ($_POST['phone_number']);
 		}
@@ -27,7 +28,7 @@
 	} else if($_POST['new_account'] == 'false'){	//if updating an existing account
 		$username = ($_SESSION['username']);
 		switch($_POST['update_account_type']){
-			case "password":$password 	= ($_POST['password']);
+			case "password":$password 	= password_hash($_POST['password'], PASSWORD_DEFAULT);
 					$sql = "UPDATE Users SET password='$password' WHERE username='$username'";
 					break;
 			case "email":	$email 		= ($_POST['email']);

@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	include("favicon.php");
 	include("authenticate_session.php");
 ?>
 <!DOCTYPE html>
@@ -29,7 +30,7 @@
     <?php
       require("dbconnect.php");
       $ticket_number = $_POST["ticketNum"];
-      $_SESSION["ticketNum"] = $_POST["ticketNum"];
+      $_SESSION["ticket_number"] = $_POST["ticketNum"];
       $infoQuery = "select * from Tickets where ticket_number='$ticket_number';";
       $ticketInfo = mysqli_query($CSDB, $infoQuery);
       $updateArray = mysqli_fetch_assoc($ticketInfo);
@@ -78,18 +79,17 @@
           if($_SESSION["user_type"] == "Administrator"){
             echo "<td>".$updateArray["username"]."</td>";
           }
-        echo "</tr>";
-        echo "<tr>";
-          echo "<th>Note History</th>";
-        echo "</tr>";
-        echo "<tr>";
-          echo "<td>".$updateArray["comments"]."</td>";
-        echo "</tr>";
+        echo "</tr></table>";
+          echo "<table><th>Note History</th>";
+	  $notesArr = explode("~|~", $updateArray["comments"]);
+	  foreach($notesArr as $value){
+		echo("<tr><td>" . $value . "</td><tr>");
+	  }
       echo "</table>";
      mysqli_close($CSDB);
     ?>
 		</div>
-
+		<br><br>
 		<div id="ticket_info">
     <?php
 			echo "<b>| Update Ticket |</b>";

@@ -18,8 +18,8 @@
     }
   
     if(isset($_POST["editNotes"]) && $_POST["editNotes"] != ""){
-      $notesEdit = filter_var($_POST["editNotes"], 513);
-      $editQuery = "update Tickets set comments = '$notesEdit' where ticket_number = '$ticket_number';";
+      $notesEdit = filter_var(date("Y-m-d H:i:s") . " " . $_POST["editNotes"] . "~|~", 513);
+      $editQuery = "update Tickets set comments = CONCAT(comments, '$notesEdit') where ticket_number = '$ticket_number';";
       $Update = mysqli_query($CSDB, $editQuery);
     }
   

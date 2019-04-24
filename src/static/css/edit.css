@@ -52,6 +52,8 @@ body{
         border-radius: 8px;
         border: 1px solid #ccc;
         box-shadow: 10px 10px 5px steelblue;
+	overflow-y: auto;
+	text-align: center;
 }
 
 #ticket_info th, td{
@@ -59,6 +61,7 @@ body{
 }
 #ticket_info tr{
 	border-bottom: 1px solid #ddd;
+	text-align:center;
 }
 #table_of_updates{
 	border: solid;
@@ -150,3 +153,34 @@ input[type=checkbox]{
         filter: alpha(opacity=80);
 }
 
+
+/*#time_range{
+        -webkit-appearance: none;
+        width: 75%;
+        height: 15px;
+        border-radius: 5px;
+        background: #FF6347;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+}
+#time_range:hover{
+        opacity: 1;
+}
+#time_range::-webkit-slider-thumb{
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #696969;
+        cursor: pointer;
+}
+#time_range::-moz-range-thumb{
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #696969;
+        cursor: pointer;
+}*/

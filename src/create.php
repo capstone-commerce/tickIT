@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	include("authenticate_session.php");
+	include("favicon.php");
 	require('dbconnect.php');
 ?>
 <!DOCTYPE html>

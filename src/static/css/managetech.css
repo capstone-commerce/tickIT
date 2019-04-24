@@ -84,12 +84,19 @@ table{
 	background-color: #FFDEAD;
 }
 #managetech_footer{
-        margin-top: 90vh;
+        margin-top: 75vh;
         height: 5%;
         width: 100%;
 }
 #logout_button{
         float: right;
+	padding-right: 50px;
+	 background-color: limegreen;
+        padding: 4px 10px;
+        margin: 4px 0;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
 }
 input[type=submit]{
         color: white;
@@ -101,7 +108,7 @@ input[type=submit]{
         border-radius: 8px;
         cursor: pointer;
 }
-input[type=submit]{
+/*input[type=submit]{
         color: white;
         background-color: #B22222;
         padding: 12px 20px;
@@ -110,4 +117,4 @@ input[type=submit]{
         border: 1px solid #ccc;
         border-radius: 8px;
         cursor: pointer;
-}
+}*/

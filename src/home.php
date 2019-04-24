@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	include("favicon.php");
 	require("dbconnect.php");
 	include("authenticate_session.php");
 ?>
@@ -41,8 +42,8 @@
 	<div id="home_main">
   <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 		<table id="attribute_table">
-			<tr><td><input type="checkbox" name="archived_tickets" value="Archived Tickets"> Archived Tickets<br></td></tr>
-      <tr><td><input type="checkbox" name="date_created" value="Date Created">Date (fill bellow YYYY-MM-DD)<br></td></tr>
+			<tr><td><input type="checkbox" name="archived_tickets" value="Archived Tickets"> Archived Tickets</td>
+		      <td><input type="checkbox" name="date_created" value="Date Created">Date</td></tr>
       <?php
         if($_SESSION["user_type"] == "Technician"){
           echo "<tr><td><input type='checkbox' name='assignee' value='Assignee'>Assignee (Archived only. Fill bellow)<br></td></tr>";
@@ -51,10 +52,10 @@
         }
       ?>
 
-			<tr><td><input type="checkbox" name="range_search" value="Priority"> Priority <span id="demo"></span><br></td></tr>
+			<tr><td><input type="checkbox" name="range_search" value="Priority"> Priority <span id="demo"></span></td></tr>
 			<tr><td><input type="range" min="1" max="9" value="5" class="slider" id="priority_range" name="priority"></td></tr>
-			<tr><td><input type="text" name="ticket_table_search" value=""></td></tr>
-			<tr><td><input type="submit" name="ticket_table_search_submit" value="Search"></td></tr>
+			<tr><td><input type="text" name="ticket_table_search" value=""></td>
+			<td><input type="submit" name="ticket_table_search_submit" value="Search"></td></tr>
 		</table>
    </form>
    <!--/*
