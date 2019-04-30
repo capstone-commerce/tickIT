@@ -5,6 +5,9 @@ html{
 	overflow-y: scroll;
 	background-image: linear-gradient(lightblue, lightseagreen);
 }
+table{
+	text-align: center;
+}
 body{
 	height: 100%;
         max-width: 100%;
@@ -132,9 +135,6 @@ input[type=submit]{
 	border: none;
 	border-radius: 8px;
 	cursor: pointer;
-       /* margin-top: 70vh;
-        margin-right: 10vw;
-        float:right;*/
 }
 input[type=checkbox]{	
 	padding-left: 35px;
@@ -152,9 +152,17 @@ input[type=checkbox]{
 	opacity: 0.8;
         filter: alpha(opacity=80);
 }
-
-
-/*#time_range{
+/*input[type=password]{
+	padding:12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-sizing: border-box;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+#time_range{
         -webkit-appearance: none;
         width: 75%;
         height: 15px;

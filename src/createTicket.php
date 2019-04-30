@@ -23,11 +23,11 @@
 	} else {
 		$ticket_number 		= ($_POST['ticket_number']);
 		$customer_name 		= filter_var($_POST['customer_name'], 513);
-		$customer_email 	= filter_var($_POST['customer_email'], 274);
+		$customer_email 	= filter_var($_POST['customer_email'], 517);
 		$issue 			= filter_var($_POST['issue'], 513);
 		$urgency 		= filter_var($_POST['urgency'], 513);
 		$comments		= filter_var($_POST['comments'], 513);
-		$username 		= ($_POST['username']);
+		$username 		= filter_var($_POST['username'], 513);
 		$device_brand 		= filter_var($_POST['device_brand'], 513);
 		$device_serialNumber 	= filter_var($_POST['device_serialNumber'], 513);
 	}
@@ -43,10 +43,10 @@
 	$ticket_sql = "INSERT INTO Tickets ". 
 		"(ticket_number, customer_name, customer_email, issue, urgency, " .
 			"comments, username, status, date_created, device_brand, " .
-			"device_serialNumber, transactionID) VALUES " .
+			"device_serialNumber, transactionID, date_finished) VALUES " .
 		"('$ticket_number','$customer_name','$customer_email','$issue','$urgency'," .
 			"'$comments','$username','$status','$date_created','$device_brand'," .
-			"'$device_serialNumber', '$transactionID')";
+			"'$device_serialNumber', '$transactionID', null)";
 	$ticket_retval = mysqli_query($CSDB, $ticket_sql);
 	if(! $ticket_retval ) {
 		die('Could not enter data: ' . mysqli_error($CSDB));

@@ -24,9 +24,9 @@
 			<table id="info_table">
 				<th>Old Password</th><th>Confirm Password</th><th>New Password</th>
 				<tr>
-					<td><input type="text" name="old_password" value=""></td>
-					<td><input type="text" name="confirm_old_password" value=""></td>
-					<td><input type="text" name="password" value=""></td>
+					<td><input type="password" name="old_password" value=""></td>
+					<td><input type="password" name="confirm_old_password" value=""></td>
+					<td><input type="password" name="password" value=""></td>
 				</tr>
 			</table>
 			<input type="hidden" name="new_account" value="false">

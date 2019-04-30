@@ -3,6 +3,7 @@
   require("dbconnect.php");
   include("favicon.php");
   include("authenticate_session.php");
+  $_SESSION["editInfo"] = $_SESSION["ticket_number"];
 ?>
 
 <!Doctype html>

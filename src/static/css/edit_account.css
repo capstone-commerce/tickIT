@@ -7,6 +7,7 @@ html, body{
 }
 table{
         width: 75vw;
+	text-align: center;
 }
 #home_button{
         padding: 12px 20px;
@@ -135,4 +136,14 @@ input[type=submit]{
 #demo{
 	float: right;
 	padding-right: 60px;
+}
+input[type=password]{
+	padding:12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-sizing: border-box;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
 }

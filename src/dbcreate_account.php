@@ -6,18 +6,21 @@
 		if(! get_magic_quotes_gpc() ) {
 			$username = addslashes ($_POST['username']);
 			$password = addslashes ($_POST['password']);
-      $password = password_hash($password, PASSWORD_DEFAULT);
+      			$password = password_hash($password, PASSWORD_DEFAULT);
 			$email = addslashes ($_POST['email']);
 			$phone = addslashes ($_POST['phone_number']);
 		} else {
-			$username = ($_POST['username']);
+			$username = filter_var($_POST['username'], 513);
 			$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-			$email = ($_POST['email']);
-			$phone = ($_POST['phone_number']);
+			$email = filter_var($_POST['email'], 517);
+			$phone = filter_var($_POST['phone_number'], 519);
 		}
+
+		$time_out = 30;
+
 		$sql = "INSERT INTO Users ". 
-			"(username,password,email,phone_number,department,role,locked) "."VALUES ".
-			"('$username','$password','$email','$phone','Comp. Sci','Technician','False')";
+			"(username,password,email,phone_number,department,role,locked,time_out) "."VALUES ".
+			"('$username','$password','$email','$phone','Comp. Sci','Technician','False','$time_out')";
 		$retval = mysqli_query($CSDB, $sql);
 		if(! $retval ) {
 			die('Could not enter data: ' . mysqli_error($CSDB));
@@ -31,10 +34,10 @@
 			case "password":$password 	= password_hash($_POST['password'], PASSWORD_DEFAULT);
 					$sql = "UPDATE Users SET password='$password' WHERE username='$username'";
 					break;
-			case "email":	$email 		= ($_POST['email']);
+			case "email":	$email 		=  filter_var($_POST['email'], 517);
 					$sql = "UPDATE Users SET email='$email' WHERE username='$username'";
 					break;
-			case "phone":	$phone		= ($_POST['phone_number']);
+			case "phone":	$phone		= filter_var($_POST['phone_number'], 519);
 					$sql = "UPDATE Users SET phone_number='$phone' WHERE username='$username'";
 					break;
 			case "time_out":$time_out	= ($_POST['time_out']);

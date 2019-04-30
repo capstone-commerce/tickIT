@@ -3,7 +3,7 @@ html, body{
         max-width: 100%;
         overflow-x: hidden;
         overflow-y: hidden;
-        background-image: linear-gradient(to bottom right, lightblue, lightseagreen);
+        background-image: linear-gradient(to bottom right, #FFE4B5, paleturquoise);
 }
 table{
         width: 75vw;

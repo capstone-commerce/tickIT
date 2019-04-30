@@ -65,6 +65,22 @@ switch($_SESSION['message_type']){
 				"<br><br>Please feel free to contact us, and don't hesitate to allow us to help you in the future!" . 
 				"<br>Best,<br>tickIT Email Bot :)";
 		break;
+	case "password_reset":
+		$username 	= $_SESSION['reset_pass_username'];
+		$email_query 	= "SELECT email FROM Users WHERE username='$username'";
+		$email_retval 	= mysqli_query($CSDB, $email_query);
+		$row 		= mysqli_fetch_assoc($email_retval);
+
+		$email 		= $row["email"];
+		$name 		= $username;
+		$subject 	= "Account Information Changed";
+		$body 		= "Greetings " . $username . ", " . 
+				"<br><br>" . 
+				"Your account information has been updated. If you did not request " . 
+				"for your account information to be updated, please inform your department's system administrator." . 
+				"<br><br>Best,<br>tickIT Email Bot :)";
+		break;
+
 }
 $mail->Subject = $subject;
 $mail->addAddress($email, $name);
@@ -91,6 +107,9 @@ unset($_SESSION['close_name']);
 unset($_SESSION['close_assignee']);
 unset($_SESSION['close_notes']);
 unset($_SESSION['close_issue']);
+
+unset($_SESSION['reset_pass_username']);
+
 if (!$mail->send()) {
 	echo "Mailer Error: " . $mail->ErrorInfo;
 } else {

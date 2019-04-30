@@ -29,9 +29,14 @@
 		<div id="ticket_info">
     <?php
       require("dbconnect.php");
-      $ticket_number = $_POST["ticketNum"];
-      $_SESSION["ticket_number"] = $_POST["ticketNum"];
-      $infoQuery = "select * from Tickets where ticket_number='$ticket_number';";
+      if(isset($_SESSION["editInfo"])){
+        $ticket_number = $_SESSION["editInfo"];
+        unset($_SESSION["editInfo"]);
+      }else {  
+        $_SESSION["ticket_number"] = $_POST["ticketNum"];
+        $ticket_number = $_SESSION["ticket_number"];
+      }
+      $infoQuery = "select * from Tickets where ticket_number= '$ticket_number';";
       $ticketInfo = mysqli_query($CSDB, $infoQuery);
       $updateArray = mysqli_fetch_assoc($ticketInfo);
 			echo "<b>| Ticket info |</b>";
@@ -95,6 +100,22 @@
 			echo "<b>| Update Ticket |</b>";
       echo "<form method='post' action='update.php'>";
       echo "<table width='800'>";
+        echo "<tr>";
+          echo "<th>Edit Customer Name</th>";
+          echo "<th>Edit Customer Email</th>";
+        echo "</tr>";
+        echo "<tr>";
+          echo "<td><input type= 'text' name= 'editCustName'></td>";
+          echo "<td><input type= 'text' name= 'editCustEmail'></td>";
+        echo "</tr>";
+        echo "<tr>";
+          echo "<th>Edit Device Brand</th>";
+          echo "<th>Edit Device Serial #</th>";
+        echo "</tr>";
+        echo "<tr>";
+          echo "<td><input type= 'text' name= 'editBrand'></td>";
+          echo "<td><input type= 'text' name= 'editSerial'></td>";
+        echo "</tr>";
         echo "<tr>";
           echo "<th>Edit Issue Description</th>";
           echo "<th>Change Urgency level</th>";

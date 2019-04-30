@@ -27,12 +27,16 @@
 		$Array = mysqli_query($CSDB, $queueQuery);
 	?>
 	<div id="managetech_banner">
-		<h2><?php echo($_POST['username']); ?></h2>
+		<h2><?php echo($username); ?></h2>
 		<button id="home_button">Home</button>
 		<?php
-			echo("<form action='delete_user.php' method='post'>" . 
-				"<input type='hidden' name='username_to_del' value=" . $username . ">" . 
+			echo("<form style='height: 32px' action='delete_user.php' method='post'>" . 
+				"<input type='hidden' name='username_to_del' value='" . $username . "'>" . 
 				"<input type='submit' value='Delete User'>" . 
+			"</form>" .
+			"<form action='reset_pass.php' method='post'>" . 
+				"<input type='hidden' name='username_to_reset' value='" . $username . "'>" .
+				"<input style='color: buttontext; background-color: buttonface' type='submit' value='Reset Password'>" . 
 			"</form>");
 		?>
 	</div>
@@ -49,10 +53,6 @@
 			?>
 		</table>
 		<br><br>
-<!--		<table id="ticket_table">
-			<th>THIS WILL BE THE TICKET HISTORY TABLE FOR <?php echo($username); ?></th>
-			<tr><td>ticket 1</td></tr>
-		</table> -->
 	</div>
 	<div id="managetech_footer">
 		<form id="logout_button" action="logout.php">

@@ -74,7 +74,7 @@
 					<th>Description</th>
        <?php
          if(isset($_POST["archived_tickets"])){
-           echo "<th>Date Finished</th>";
+           echo "<th>Date Closed</th>";
          }else{
           echo "<th>Date Created</th>";
          }
@@ -92,13 +92,13 @@
        if(isset($_POST["archived_tickets"])){
        
          if(isset($_POST["date_created"])){
-           $queueQuery = "Select ticket_number, issue, date_finished, urgency, username from Archived where date_finished = '$searchValue';";
+           $queueQuery = "Select ticket_number, issue, date_finished, urgency, username from Tickets where status = 'Closed' and date_finished = '$searchValue';";
          }else if(isset($_POST["assignee"])){
-           $queueQuery = "Select ticket_number, issue, date_finished, urgency, username from Archived where username = '$searchValue';";
+           $queueQuery = "Select ticket_number, issue, date_finished, urgency, username from Tickets where username = '$searchValue' and status = 'Closed';";
          }else if(isset($_POST["range_search"])){
-           $queueQuery = "select ticket_number, issue, date_finished, urgency, username from Archived where urgency = ".$_POST["priority"].";";
+           $queueQuery = "select ticket_number, issue, date_finished, urgency, username from Tickets where urgency = ".$_POST["priority"]." and status='Closed';";
          }else{
-           $queueQuery = "Select ticket_number, issue, date_finished, urgency, username from Archived;";
+           $queueQuery = "Select ticket_number, issue, date_finished, urgency, username from Tickets where status = 'Closed';";
          }
         /*If not looking for archived tickets*/ 
        }else if(!isset($_POST["archived_tickets"])){
@@ -114,19 +114,19 @@
          }else if(isset($_POST["range_search"])){
          
            if($_SESSION["user_type"] == "Technician"){
-             $queueQuery = "Select ticket_number, issue, date_created, urgency from Tickets where username = '".$_SESSION["username"]."' and urgency = ".$_POST["priority"].";";
+             $queueQuery = "Select ticket_number, issue, date_created, urgency from Tickets where username = '".$_SESSION["username"]."' and urgency = ".$_POST["priority"]." and status = 'In Progress';";
            }else{
-             $queueQuery = "Select ticket_number, issue, date_created, urgency, username from Tickets where urgency  ".$_POST["priority"].";";
+             $queueQuery = "Select ticket_number, issue, date_created, urgency, username from Tickets where urgency = ".$_POST["priority"]." and status = 'In Progress';";
            }
          /*searching tickets by assignee Admin only*/  
          }else if(isset($_POST["assignee"]) && $_SESSION["user_type"] == "Administrator"){
-           $queueQuery = "Select ticket_number, issue, date_created, urgency, username from Tickets where username='$searchValue';";
+           $queueQuery = "Select ticket_number, issue, date_created, urgency, username from Tickets where username='$searchValue' and status = 'In Progress';";
          /*Default ticket queue*/
          }else{
            if($_SESSION["user_type"] == "Technician"){
-             $queueQuery = "Select ticket_number, issue, date_created, urgency from Tickets where username = '".$_SESSION["username"]."';";
+             $queueQuery = "Select ticket_number, issue, date_created, urgency from Tickets where username = '".$_SESSION["username"]."' and status = 'In Progress';";
            }else{
-              $queueQuery = "Select ticket_number, issue, date_created, urgency, username from Tickets;";
+              $queueQuery = "Select ticket_number, issue, date_created, urgency, username from Tickets where status = 'In Progress';";
            }
          }
        }
@@ -145,7 +145,7 @@
               }else{
                 echo "<tr>";
                 echo "<td>" .$row["ticket_number"]."</td><td>".$row["issue"]."</td><td>".$row["date_finished"]."</td><td>".$row["urgency"]."</td><td>".$row["username"]."</td>";
-                echo "<td><form method='post' action='ticketHistory.php'><input type ='hidden' value =".$row["ticket_number"]."name='archiveNum'>";
+                echo "<td><form method='post' action='ticketHistory.php'><input type='hidden' value =".$row["ticket_number"]." name='ticketNum'>";
                 echo "<input type='submit' id='ticketInfo' value='View'></form></td>";
                 echo "</tr>";
  			        }
@@ -164,7 +164,7 @@
             }else{
                 echo "</tr>";
                 echo "<td>".$row["ticket_number"]."</td><td>".$row["issue"]."</td><td>".$row["date_finished"]."</td><td>".$row["urgency"]."</td><td>".$row["username"]."</td>";
-                echo "<td><form method='post' action='ticketHistory.php'><input type='hidden' value=".$row["ticket_number"]."name='archiveNum'>";
+                echo "<td><form method='post' action='ticketHistory.php'><input type='hidden' value=".$row["ticket_number"]." name='ticketNum'>";
                 echo "<input type='submit' id='ticketInfo' value='View'></form></td>";
                 echo "</tr>";
             }

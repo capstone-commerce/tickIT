@@ -27,18 +27,16 @@
 		<div id="ticket_info">
     <?php
       require("dbconnect.php");
-      $ticket_number = $_POST["archiveNum"];
-      //echo $ticket_number;
-      //$_SESSION["ticketNum"] = $_POST["archiveNum"];
-      $infoQuery = "select * from Archived where ticket_number='$ticket_number';";
+      $ticket_number = $_POST["ticketNum"];
+      $infoQuery = "select * from Tickets where ticket_number='$ticket_number';";
       $ticketInfo = mysqli_query($CSDB, $infoQuery);
       $infoArray = mysqli_fetch_assoc($ticketInfo);
-      //echo $infoArray["transactionID"];
+      echo $_POST["ticketNum"];
 			echo "<b>| Ticket info |</b>";
       echo "<table id = 'ticket info table' width='800'>";
         echo "<tr>";
           echo "<th>Ticket Number</th>";
-          echo "<th>Date Finished</th>";
+          echo "<th>Date Closed</th>";
         echo "</tr>";
         echo "<tr>";
           echo "<td>".$infoArray["ticket_number"]."</td>";
@@ -85,7 +83,9 @@
       echo "</table>";
     ?>
 		</div>
-
+   
+    <br><br>
+    
 		<div id='ticket_info'>
     <?php
       $transactionInfo = "Select * from Transaction_History where transactionID=".$infoArray["transactionID"].";";

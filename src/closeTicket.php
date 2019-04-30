@@ -3,7 +3,7 @@
   include("authenticate_session.php");
   require("dbconnect.php");
   
-    if($_POST["amount"] == "" || $_POST["charges"] == "" || $_POST["pay_method"] == ""){
+    if($_POST["amount"] == "" || $_POST["charges"] == "" || $_POST["pay_method"] == "" || !is_numeric($_POST["amount"])){
       $_SESSION["transactionMSG"] = "Please fill out required fields (*)";
       header("Location: ./transaction.php");
       exit();
@@ -20,7 +20,7 @@
 	$_SESSION['close_issue'] 	= $close_row['issue'];
 	$_SESSION['message_type']	= "ticket_closed";
 
-      $amount = filter_var($_POST["amount"], 259);
+      $amount = filter_var($_POST["amount"], 520);
       $charges = filter_var($_POST["charges"], 513);
       $payMethod = filter_var($_POST["pay_method"], 513);
       $Notes = filter_var($_POST["additionalNotes"], 513);
@@ -48,14 +48,9 @@
       
       $retval= mysqli_query($CSDB, $TransactionQuery);
       
-      $ArchivedData = "INSERT INTO Archived (ticket_number, customer_name, customer_email, issue, urgency, comments, username, status, date_finished, device_brand, device_serialNumber, transactionID) VALUES($ticket_Number, '$customer_name', '$customer_email', '$issue', $urgency, '$comments', '$username', 'Closed', '$datePaid', '$device_brand', '$device_serial', $transactionID);";
+      $updateStatus = "update Tickets set date_finished = '$datePaid', status='Closed' where ticket_number = ".$infoArray["ticket_number"].";";
       
-      
-      $archive = mysqli_query($CSDB, $ArchivedData);
-      
-      $deleteTicket = "delete from Tickets where ticket_number=".$infoArray['ticket_number'].";";
-      
-      $retval = mysqli_query($CSDB, $deleteTicket);
+      $retval = mysqli_query($CSDB, $updateStatus);
 
 	mysqli_close($CSDB);
 	header("Location: ./email.php");

@@ -7,6 +7,7 @@ html, body{
 }
 table{
         width: 75vw;
+	text-align: center;
 }
 #create_account_banner{
 	height: 12%;
