@@ -5,7 +5,7 @@
 
 	$username = filter_var($_POST['username_to_reset'], 513);
 
-	$new_pass = password_hash("tickit_tech", PASSWORD_DEFAULT);
+	$new_pass = password_hash("tickit_pass", PASSWORD_DEFAULT);
 
 	$sql = "UPDATE Users SET password='$new_pass' WHERE username='$username'";
 	$retval = mysqli_query($CSDB, $sql);

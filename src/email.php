@@ -38,6 +38,8 @@ switch($_SESSION['message_type']){
 		$update_retval 	= mysqli_query($CSDB, $update_query);
 		$update_row	= mysqli_fetch_assoc($update_retval);
 
+		$notesToShare	= $_SESSION['edit_notes_email'];
+
 		$email 		= $update_row['customer_email'];
 		$name		= $update_row['customer_name'];
 		$subject	= "TickIT Update On [" . $update_row['issue'] . "]";
@@ -45,9 +47,9 @@ switch($_SESSION['message_type']){
 				"<br><br>" . 
 				"We have a special update on your tickIT regarding your issue [" . $update_row['issue'] . "]!" . 
 				"<br>Here are the details:<br><br>" . 
-				"Assigned Technician: " . $_SESSION['edit_assignee'] . "<br>" . 
+				"Assigned Technician: " . $_SESSION['edit_assignee'] . " | tickit.capstone@gmail.com" . "<br>" . 
 				"Notes to be shared with you: <br>" . 
-				"[" . $_SESSION['edit_notes'] . "]" . 
+				"[" . $notesToShare . "]" . 
 				"<br><br>Please feel free to contact us in regards to your tickIT!" . 
 				"<br>Best,<br>tickIT Email Bot :)";
 		break;
@@ -111,7 +113,7 @@ unset($_SESSION['close_issue']);
 unset($_SESSION['reset_pass_username']);
 
 if (!$mail->send()) {
-	echo "Mailer Error: " . $mail->ErrorInfo;
+	echo "Mailer Error: [" . $mail->ErrorInfo . "]<br>" . "Please contact your tickIT representative.";
 } else {
 	header("Location: ./home.php");
 	exit;

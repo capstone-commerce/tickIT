@@ -31,7 +31,7 @@
       $infoQuery = "select * from Tickets where ticket_number='$ticket_number';";
       $ticketInfo = mysqli_query($CSDB, $infoQuery);
       $infoArray = mysqli_fetch_assoc($ticketInfo);
-      echo $_POST["ticketNum"];
+      //echo $_POST["ticketNum"];
 			echo "<b>| Ticket info |</b>";
       echo "<table id = 'ticket info table' width='800'>";
         echo "<tr>";
@@ -74,13 +74,14 @@
           echo "<td>".$infoArray["device_serialNumber"]."</td>";
           echo "<td>".$infoArray["username"]."</td>";
         echo "</tr>";
-        echo "<tr>";
-          echo "<th>Notes</th>";
-        echo "</tr>";
-        echo "<tr>";
-          echo "<td>".$infoArray["comments"]."</td>";
-        echo "</tr>";
+	echo "</tr></table>";
+          echo "<table><th>Note History</th>";
+	  $notesArr = explode("~|~", $infoArray["comments"]);
+	  foreach($notesArr as $value){
+		echo("<tr><td>" . $value . "</td><tr>");
+	  }
       echo "</table>";
+
     ?>
 		</div>
    
