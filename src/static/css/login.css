@@ -5,7 +5,7 @@ html, body{
 }
 body{
         color: white;
-        background-image: linear-gradient(to bottom left, paleturquoise, #FFE4B5);
+        background-image: linear-gradient(lightseagreen, lightblue);
         transform: translate(-50%, -50%);
         /*position: absolute;*/
         text-align: center;

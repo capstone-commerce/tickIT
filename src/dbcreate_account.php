@@ -6,7 +6,7 @@
 		if(! get_magic_quotes_gpc() ) {
 			$username = addslashes ($_POST['username']);
 			$password = addslashes ($_POST['password']);
-			$password = password_hash($password, PASSWORD_DEFAULT);
+      			$password = password_hash($password, PASSWORD_DEFAULT);
 			$email = addslashes ($_POST['email']);
 			$phone = addslashes ($_POST['phone_number']);
 		} else {

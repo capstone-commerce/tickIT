@@ -20,7 +20,6 @@
       $notesEdit = filter_var(date("Y-m-d H:i:s") . " " . $_POST["editNotes"] . "~|~", 513);
       $editQuery = "update Tickets set comments = CONCAT(comments, '$notesEdit') where ticket_number = $ticket_number;";
       $Update = mysqli_query($CSDB, $editQuery);
-      $_SESSION['edit_notes_email'] = $_POST['editNotes'];
     }
   
     if($_SESSION["user_type"] == "Administrator" && isset($_POST["editAssignee"]) && $_POST["editAssignee"] != ""){

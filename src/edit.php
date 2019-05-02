@@ -31,7 +31,6 @@
       require("dbconnect.php");
       if(isset($_SESSION["editInfo"])){
         $ticket_number = $_SESSION["editInfo"];
-        $_SESSION["ticket_number"] = $_SESSION["editInfo"];
         unset($_SESSION["editInfo"]);
       }else {  
         $_SESSION["ticket_number"] = $_POST["ticketNum"];

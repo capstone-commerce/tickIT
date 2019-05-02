@@ -34,8 +34,7 @@
 	$status 		= "In Progress";
 	$date_created 		= date("Y-m-d H:i:s");	//time in UTC
 	$transactionID = $ticket_number;
-
-	$comments = $date_created . " " . $comments . "~|~";
+//	$urgency = 3;
 
 	$transaction_sql = "INSERT INTO Transaction_History " . 
 			"(transactionID,status) VALUES ('$transactionID', 'pending')";
